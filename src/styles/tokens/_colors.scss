@@ -1,6 +1,10 @@
 // styles/tokens/_colors.scss - UNIFIED Color System
 // Single source of truth for all colors
 
+// Import modules for modern Sass functions
+@use "sass:color";
+@use "sass:map";
+
 // ============================================================================
 // CORE BRAND COLORS
 // ============================================================================
@@ -19,10 +23,10 @@ $color-warning: #f59e0b;
 @function generate-tonal-palette($base-color) {
   @return (
     'base': $base-color,
-    'light': mix(white, $base-color, 20%),
-    'dark': mix(black, $base-color, 20%),
-    'container': mix(white, $base-color, 88%),
-    'on-container': mix(black, $base-color, 85%),
+    'light': color.mix(white, $base-color, 20%),
+    'dark': color.mix(black, $base-color, 20%),
+    'container': color.mix(white, $base-color, 88%),
+    'on-container': color.mix(black, $base-color, 85%),
   );
 }
 
@@ -71,52 +75,52 @@ $text-light: (
 // ============================================================================
 :root {
   // Primary palette
-  --color-primary: #{map-get($palette-primary, 'base')};
-  --color-primary-light: #{map-get($palette-primary, 'light')};
-  --color-primary-dark: #{map-get($palette-primary, 'dark')};
-  --color-primary-container: #{map-get($palette-primary, 'container')};
-  --color-on-primary-container: #{map-get($palette-primary, 'on-container')};
+  --color-primary: #{map.get($palette-primary, 'base')};
+  --color-primary-light: #{map.get($palette-primary, 'light')};
+  --color-primary-dark: #{map.get($palette-primary, 'dark')};
+  --color-primary-container: #{map.get($palette-primary, 'container')};
+  --color-on-primary-container: #{map.get($palette-primary, 'on-container')};
   --color-on-primary: #ffffff;
 
   // Secondary palette
-  --color-secondary: #{map-get($palette-secondary, 'base')};
-  --color-secondary-container: #{map-get($palette-secondary, 'container')};
+  --color-secondary: #{map.get($palette-secondary, 'base')};
+  --color-secondary-container: #{map.get($palette-secondary, 'container')};
   --color-on-secondary: #ffffff;
 
   // Error palette
-  --color-error: #{map-get($palette-error, 'base')};
-  --color-error-container: #{map-get($palette-error, 'container')};
+  --color-error: #{map.get($palette-error, 'base')};
+  --color-error-container: #{map.get($palette-error, 'container')};
   --color-on-error: #ffffff;
 
   // Success palette
-  --color-success: #{map-get($palette-success, 'base')};
-  --color-success-container: #{map-get($palette-success, 'container')};
+  --color-success: #{map.get($palette-success, 'base')};
+  --color-success-container: #{map.get($palette-success, 'container')};
   --color-on-success: #ffffff;
 
   // Dark theme (default)
-  --color-bg: #{map-get($surface-dark, 'bg')};
-  --color-surface: #{map-get($surface-dark, 'surface')};
-  --color-surface-variant: #{map-get($surface-dark, 'surface-variant')};
-  --color-outline: #{map-get($surface-dark, 'outline')};
-  --color-outline-variant: #{map-get($surface-dark, 'outline-variant')};
+  --color-bg: #{map.get($surface-dark, 'bg')};
+  --color-surface: #{map.get($surface-dark, 'surface')};
+  --color-surface-variant: #{map.get($surface-dark, 'surface-variant')};
+  --color-outline: #{map.get($surface-dark, 'outline')};
+  --color-outline-variant: #{map.get($surface-dark, 'outline-variant')};
 
-  --color-text-primary: #{map-get($text-dark, 'primary')};
-  --color-text-secondary: #{map-get($text-dark, 'secondary')};
-  --color-text-tertiary: #{map-get($text-dark, 'tertiary')};
+  --color-text-primary: #{map.get($text-dark, 'primary')};
+  --color-text-secondary: #{map.get($text-dark, 'secondary')};
+  --color-text-tertiary: #{map.get($text-dark, 'tertiary')};
 }
 
 // Light theme override
 @media (prefers-color-scheme: light) {
   :root {
-    --color-bg: #{map-get($surface-light, 'bg')};
-    --color-surface: #{map-get($surface-light, 'surface')};
-    --color-surface-variant: #{map-get($surface-light, 'surface-variant')};
-    --color-outline: #{map-get($surface-light, 'outline')};
-    --color-outline-variant: #{map-get($surface-light, 'outline-variant')};
+    --color-bg: #{map.get($surface-light, 'bg')};
+    --color-surface: #{map.get($surface-light, 'surface')};
+    --color-surface-variant: #{map.get($surface-light, 'surface-variant')};
+    --color-outline: #{map.get($surface-light, 'outline')};
+    --color-outline-variant: #{map.get($surface-light, 'outline-variant')};
 
-    --color-text-primary: #{map-get($text-light, 'primary')};
-    --color-text-secondary: #{map-get($text-light, 'secondary')};
-    --color-text-tertiary: #{map-get($text-light, 'tertiary')};
+    --color-text-primary: #{map.get($text-light, 'primary')};
+    --color-text-secondary: #{map.get($text-light, 'secondary')};
+    --color-text-tertiary: #{map.get($text-light, 'tertiary')};
   }
 }
 

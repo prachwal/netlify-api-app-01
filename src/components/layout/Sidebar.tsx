@@ -57,15 +57,27 @@ export const Sidebar: React.FC<SidebarProps> = ({
             )}
           </div>
           
-          <Button
-            variant="ghost"
-            size="small"
-            onClick={onToggleCollapse}
-            className="sidebar__collapse-button"
-            aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-          >
-            {collapsed ? '→' : '←'}
-          </Button>
+          <div className="sidebar__header-actions">
+            <Button
+              variant="ghost"
+              size="small"
+              onClick={onCloseMobile}
+              className="sidebar__close-button"
+              aria-label="Close sidebar"
+            >
+              ✕
+            </Button>
+            
+            <Button
+              variant="ghost"
+              size="small"
+              onClick={onToggleCollapse}
+              className="sidebar__collapse-button"
+              aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+            >
+              {collapsed ? '→' : '←'}
+            </Button>
+          </div>
         </div>
 
         <nav className="sidebar__nav" role="navigation">
@@ -75,12 +87,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <button
                   className={`
                     sidebar__nav-button
-                    ${item.active ? 'sidebar__nav-button--active' : ''}
+                    ${item.active === true ? 'sidebar__nav-button--active' : ''}
                   `}
-                  onClick={() => onNavigateToSection(item.id)}
-                  aria-current={item.active ? 'page' : undefined}
+                  onClick={() => {
+                    onNavigateToSection(item.id);
+                    onCloseMobile();
+                  }}
+                  aria-current={item.active === true ? 'page' : undefined}
                 >
-                  {item.icon && (
+                  {item.icon !== undefined && item.icon !== '' && (
                     <span className="sidebar__nav-icon" aria-hidden="true">
                       {item.icon}
                     </span>

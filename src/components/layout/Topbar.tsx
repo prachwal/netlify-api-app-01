@@ -3,18 +3,31 @@ import { Button } from '../general/Button';
 
 interface TopbarProps {
   onToggleSidebar: () => void;
+  onToggleMobileSidebar?: () => void;
 }
 
+const MOBILE_BREAKPOINT = 768;
+
 export const Topbar: React.FC<TopbarProps> = ({
-  onToggleSidebar
+  onToggleSidebar,
+  onToggleMobileSidebar
 }) => {
+  const handleToggleSidebar = () => {
+    // On mobile, toggle mobile sidebar; on desktop, toggle collapse
+    if (window.innerWidth < MOBILE_BREAKPOINT) {
+      onToggleMobileSidebar?.();
+    } else {
+      onToggleSidebar();
+    }
+  };
+
   return (
     <header className="topbar">
       <div className="topbar__left">
         <Button
           variant="ghost"
           size="small"
-          onClick={onToggleSidebar}
+          onClick={handleToggleSidebar}
           className="topbar__sidebar-toggle"
           aria-label="Toggle sidebar"
         >

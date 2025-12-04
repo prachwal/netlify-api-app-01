@@ -1,6 +1,9 @@
 // styles/tokens/_typography.scss - Fluid Typography Scale
 // Responsive typography with clamp() functions for optimal readability across devices
 
+// Import modules for modern Sass functions
+@use "sass:map";
+
 // Base font settings
 $font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 $font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
@@ -127,12 +130,12 @@ $typography-legacy: (
 
   // New design tokens
   @each $name, $props in $typography-scale {
-    --font-size-#{$name}: #{map-get($props, 'size')};
-    --line-height-#{$name}: #{map-get($props, 'line-height')};
-    --font-weight-#{$name}: #{map-get($props, 'weight')};
+    --font-size-#{$name}: #{map.get($props, 'size')};
+    --line-height-#{$name}: #{map.get($props, 'line-height')};
+    --font-weight-#{$name}: #{map.get($props, 'weight')};
 
-    @if map-has-key($props, 'letter-spacing') {
-      --letter-spacing-#{$name}: #{map-get($props, 'letter-spacing')};
+    @if map.has-key($props, 'letter-spacing') {
+      --letter-spacing-#{$name}: #{map.get($props, 'letter-spacing')};
     }
   }
 
@@ -150,7 +153,7 @@ $typography-legacy: (
       line-height: var(--line-height-#{$name});
       font-weight: var(--font-weight-#{$name});
 
-      @if map-has-key($props, 'letter-spacing') {
+      @if map.has-key($props, 'letter-spacing') {
         letter-spacing: var(--letter-spacing-#{$name});
       }
     }
@@ -159,14 +162,14 @@ $typography-legacy: (
 
 // Mixin for semantic typography application
 @mixin typography($size) {
-  @if map-has-key($typography-scale, $size) {
-    $props: map-get($typography-scale, $size);
-    font-size: map-get($props, 'size');
-    line-height: map-get($props, 'line-height');
-    font-weight: map-get($props, 'weight');
+  @if map.has-key($typography-scale, $size) {
+    $props: map.get($typography-scale, $size);
+    font-size: map.get($props, 'size');
+    line-height: map.get($props, 'line-height');
+    font-weight: map.get($props, 'weight');
 
-    @if map-has-key($props, 'letter-spacing') {
-      letter-spacing: map-get($props, 'letter-spacing');
+    @if map.has-key($props, 'letter-spacing') {
+      letter-spacing: map.get($props, 'letter-spacing');
     }
   } @else {
     @warn "#{$size} is not a valid typography scale. Available sizes: #{map-keys($typography-scale)}";
