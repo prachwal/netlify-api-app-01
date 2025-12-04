@@ -35,4 +35,4 @@ const HeaderSection: React.FC = () => {
   );
 };
 
-export default HeaderSection;
+export { HeaderSection };

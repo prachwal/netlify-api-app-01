@@ -14,15 +14,15 @@
 // 4. Generate color variables for theming
 :root {
   // Generate primary colors
-  @include generate-color-vars($colors-primary, 'pta-color');
+  @include generate-color-vars($colors-primary, 'app-color');
 
   // Generate dark theme colors
-  @include generate-color-vars($colors-dark, 'pta-color');
+  @include generate-color-vars($colors-dark, 'app-color');
 }
 
 // Light theme override
 @media (prefers-color-scheme: light) {
   :root {
-    @include generate-color-vars($colors-light, 'pta-color');
+    @include generate-color-vars($colors-light, 'app-color');
   }
 }

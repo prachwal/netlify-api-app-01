@@ -13,19 +13,3 @@ export function renderWithProviders(ui: ReactElement, options?: Parameters<typeo
   return render(ui, options);
 }
 
-/**
- * Mock implementation for async components
- * @param component - Component to render
- * @returns Promise resolving to rendered component
- */
-export async function renderAsync<T extends HTMLElement>(
-  component: ReactElement
-): Promise<{ container: T; unmount: () => void }> {
-  return new Promise(resolve => {
-    const result = renderWithProviders(component);
-    resolve({
-      container: result.container as T,
-      unmount: result.unmount,
-    });
-  });
-}

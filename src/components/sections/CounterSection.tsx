@@ -82,4 +82,4 @@ const CounterSection: React.FC<CounterSectionProps> = ({
   );
 };
 
-export default CounterSection;
+export { CounterSection };

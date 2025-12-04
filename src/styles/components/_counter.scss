@@ -15,9 +15,9 @@
 .counter__display {
   text-align: center;
   padding: $spacing-2xl;
-  background-color: var(--pta-color-surface-dark);
+  background-color: var(--app-color-surface-dark);
   border-radius: $border-radius-lg;
-  border: 2px solid var(--pta-color-border);
+  border: 2px solid var(--app-color-border);
   min-width: 200px;
 
   @include respond-to('sm') {
@@ -30,7 +30,7 @@
   display: block;
   font-size: clamp(2rem, 8vw, 4rem);
   font-weight: $font-weight-bold;
-  color: var(--pta-color-primary);
+  color: var(--app-color-primary);
   line-height: $line-height-tight;
 
   @include respond-to('sm') {
@@ -41,7 +41,7 @@
 .counter__status {
   display: block;
   font-size: $font-size-sm;
-  color: var(--pta-color-text-secondary);
+  color: var(--app-color-text-secondary);
   margin-top: $spacing-sm;
   text-transform: uppercase;
   letter-spacing: 0.05em;

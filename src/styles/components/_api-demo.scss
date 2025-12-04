@@ -15,19 +15,19 @@
 .api-section__title {
   font-size: $font-size-xl;
   font-weight: $font-weight-semibold;
-  color: var(--pta-color-text);
+  color: var(--app-color-text);
   margin-bottom: $spacing-lg;
-  border-bottom: 2px solid var(--pta-color-primary);
+  border-bottom: 2px solid var(--app-color-primary);
   padding-bottom: $spacing-sm;
 }
 
 // API status messages
 .api-status {
   padding: $spacing-md;
-  background-color: var(--pta-color-surface-dark);
-  border: 1px solid var(--pta-color-border);
+  background-color: var(--app-color-surface-dark);
+  border: 1px solid var(--app-color-border);
   border-radius: $border-radius-md;
-  color: var(--pta-color-text-secondary);
+  color: var(--app-color-text-secondary);
   font-style: italic;
   text-align: center;
 }
@@ -35,10 +35,10 @@
 // API response messages
 .api-response {
   padding: $spacing-md;
-  background-color: var(--pta-color-surface-dark);
-  border: 1px solid var(--pta-color-primary);
+  background-color: var(--app-color-surface-dark);
+  border: 1px solid var(--app-color-primary);
   border-radius: $border-radius-md;
-  color: var(--pta-color-text);
+  color: var(--app-color-text);
   font-weight: $font-weight-medium;
   text-align: center;
 }
@@ -56,8 +56,8 @@
 
 // API info container
 .api-info {
-  background-color: var(--pta-color-surface-dark);
-  border: 1px solid var(--pta-color-border);
+  background-color: var(--app-color-surface-dark);
+  border: 1px solid var(--app-color-border);
   border-radius: $border-radius-md;
   padding: $spacing-lg;
   display: grid;
@@ -74,7 +74,7 @@
   gap: $spacing-xs;
 
   strong {
-    color: var(--pta-color-text-secondary);
+    color: var(--app-color-text-secondary);
     font-size: $font-size-sm;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -82,12 +82,12 @@
   }
 
   span {
-    color: var(--pta-color-text);
+    color: var(--app-color-text);
     font-family: $font-family-mono;
-    background-color: var(--pta-color-background);
+    background-color: var(--app-color-background);
     padding: $spacing-xs $spacing-sm;
     border-radius: $border-radius-sm;
-    border: 1px solid var(--pta-color-border);
+    border: 1px solid var(--app-color-border);
     word-break: break-all;
   }
 }
@@ -109,21 +109,21 @@
 .echo-input {
   flex: 1;
   padding: $spacing-md;
-  border: 2px solid var(--pta-color-border);
+  border: 2px solid var(--app-color-border);
   border-radius: $border-radius-md;
-  background-color: var(--pta-color-surface);
-  color: var(--pta-color-text);
+  background-color: var(--app-color-surface);
+  color: var(--app-color-text);
   font-size: $font-size-md;
   transition: border-color $transition-base;
 
   &:focus {
     outline: none;
-    border-color: var(--pta-color-primary);
+    border-color: var(--app-color-primary);
     @include focus-visible;
   }
 
   &::placeholder {
-    color: var(--pta-color-text-secondary);
+    color: var(--app-color-text-secondary);
   }
 
   @include respond-to('sm') {
@@ -133,8 +133,8 @@
 
 // Echo response container
 .echo-response {
-  background-color: var(--pta-color-surface-dark);
-  border: 1px solid var(--pta-color-border);
+  background-color: var(--app-color-surface-dark);
+  border: 1px solid var(--app-color-border);
   border-radius: $border-radius-md;
   padding: $spacing-lg;
   margin-top: $spacing-lg;
@@ -152,7 +152,7 @@
   }
 
   strong {
-    color: var(--pta-color-text-secondary);
+    color: var(--app-color-text-secondary);
     font-size: $font-size-sm;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -162,12 +162,12 @@
   }
 
   span {
-    color: var(--pta-color-text);
+    color: var(--app-color-text);
     font-family: $font-family-mono;
-    background-color: var(--pta-color-background);
+    background-color: var(--app-color-background);
     padding: $spacing-xs $spacing-sm;
     border-radius: $border-radius-sm;
-    border: 1px solid var(--pta-color-border);
+    border: 1px solid var(--app-color-border);
     word-break: break-all;
     display: block;
   }

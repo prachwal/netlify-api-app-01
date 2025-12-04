@@ -37,6 +37,8 @@ interface ApiDemoSectionProps {
   echoData?: EchoResponse;
   /** Loading state for echo */
   echoLoading: boolean;
+  /** Error state for echo */
+  echoError?: unknown;
   /** Current message to echo */
   messageToEcho: string;
   /** Handler for message input change */
@@ -60,6 +62,7 @@ const ApiDemoSection: React.FC<ApiDemoSectionProps> = ({
   echoMessage,
   echoData,
   echoLoading,
+  echoError,
   messageToEcho,
   onMessageChange,
 }) => {
@@ -67,10 +70,24 @@ const ApiDemoSection: React.FC<ApiDemoSectionProps> = ({
    * Handle echo message submission
    */
   const handleEchoSubmit = (): void => {
+    if (!messageToEcho.trim()) {
+      return; // Don't send empty messages
+    }
+
     echoMessage({
-      message: messageToEcho,
+      message: messageToEcho.trim(),
       data: { timestamp: new Date().toISOString() }
     });
+  };
+
+  /**
+   * Get error message for display
+   */
+  const getErrorMessage = (): string => {
+    if (echoError instanceof Error) {
+      return echoError.message;
+    }
+    return String(echoError);
   };
 
   return (
@@ -84,7 +101,7 @@ const ApiDemoSection: React.FC<ApiDemoSectionProps> = ({
 
           {helloLoading ? (
             <p className="api-status">Loading hello message...</p>
-          ) : helloMessage != null && helloMessage !== '' ? (
+          ) : helloMessage != null ? (
             <p className="api-response">{helloMessage}</p>
           ) : (
             <p className="api-error">Failed to load hello message</p>
@@ -140,6 +157,12 @@ const ApiDemoSection: React.FC<ApiDemoSectionProps> = ({
             </Button>
           </div>
 
+          {echoError ? (
+            <div className="api-error">
+              Error: {getErrorMessage()}
+            </div>
+          ) : null}
+
           {echoData && (
             <div className="echo-response">
               <div className="echo-response__item">
@@ -159,4 +182,4 @@ const ApiDemoSection: React.FC<ApiDemoSectionProps> = ({
   );
 };
 
-export default ApiDemoSection;
+export { ApiDemoSection };

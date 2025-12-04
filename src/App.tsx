@@ -1,11 +1,50 @@
 // App.tsx - Main application component with Redux and RTK Query integration
 
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
+import type { ErrorInfo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState, AppDispatch } from './store';
 import { increment, decrement, reset } from './store/slices/counterSlice';
 import { useGetHelloQuery, useEchoMessageMutation, useGetApiInfoQuery } from './store';
 import { HeaderSection, CounterSection, ApiDemoSection, FeaturesSection } from './components/sections';
+
+/**
+ * Error Boundary component for catching React errors
+ */
+class ErrorBoundary extends Component<React.PropsWithChildren<{}>, { hasError: boolean; error?: Error }> {
+  constructor(props: React.PropsWithChildren<{}>) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    // eslint-disable-next-line no-console
+    console.error('Error caught by boundary:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="error-boundary" data-testid="error-boundary">
+          <h2 className="error-boundary__title">Something went wrong</h2>
+          <p className="error-boundary__message">An error occurred while rendering the application.</p>
+          <button
+            className="error-boundary__retry-button"
+            onClick={() => this.setState({ hasError: false, error: undefined })}
+          >
+            Try again
+          </button>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
 
 /**
  * Main application component
@@ -28,7 +67,7 @@ const App: React.FC = () => {
   // RTK Query hooks
   const { data: helloMessage, isLoading: helloLoading } = useGetHelloQuery();
   const { data: apiInfo, isLoading: apiInfoLoading } = useGetApiInfoQuery();
-  const [echoMessage, { data: echoData, isLoading: echoLoading }] = useEchoMessageMutation();
+  const [echoMessage, { data: echoData, isLoading: echoLoading, error: echoError }] = useEchoMessageMutation();
   const [messageToEcho, setMessageToEcho] = useState('Hello from frontend!');
 
   /**
@@ -54,33 +93,36 @@ const App: React.FC = () => {
   
 
   return (
-    <div className="app">
-      <HeaderSection />
+    <ErrorBoundary>
+      <div className="app">
+        <HeaderSection />
 
-      <main className="app__main">
-        <CounterSection
-          value={value}
-          status={status}
-          onIncrement={handleIncrement}
-          onDecrement={handleDecrement}
-          onReset={handleReset}
-        />
+        <main className="app__main">
+          <CounterSection
+            value={value}
+            status={status}
+            onIncrement={handleIncrement}
+            onDecrement={handleDecrement}
+            onReset={handleReset}
+          />
 
-        <ApiDemoSection
-          helloMessage={helloMessage}
-          helloLoading={helloLoading}
-          apiInfo={apiInfo}
-          apiInfoLoading={apiInfoLoading}
-          echoMessage={echoMessage}
-          echoData={echoData}
-          echoLoading={echoLoading}
-          messageToEcho={messageToEcho}
-          onMessageChange={setMessageToEcho}
-        />
+          <ApiDemoSection
+            helloMessage={helloMessage}
+            helloLoading={helloLoading}
+            apiInfo={apiInfo}
+            apiInfoLoading={apiInfoLoading}
+            echoMessage={echoMessage}
+            echoData={echoData}
+            echoLoading={echoLoading}
+            echoError={echoError}
+            messageToEcho={messageToEcho}
+            onMessageChange={setMessageToEcho}
+          />
 
-        <FeaturesSection />
-      </main>
-    </div>
+          <FeaturesSection />
+        </main>
+      </div>
+    </ErrorBoundary>
   );
 };
 

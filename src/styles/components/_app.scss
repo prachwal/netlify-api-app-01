@@ -6,8 +6,8 @@
 // App container
 .app {
   min-height: 100vh;
-  background-color: var(--pta-color-background);
-  color: var(--pta-color-text);
+  background-color: var(--app-color-background);
+  color: var(--app-color-text);
   display: flex;
   flex-direction: column;
 }
@@ -16,8 +16,8 @@
 .app__header {
   text-align: center;
   padding: $spacing-2xl $spacing-xl;
-  background-color: var(--pta-color-surface);
-  border-bottom: 1px solid var(--pta-color-border);
+  background-color: var(--app-color-surface);
+  border-bottom: 1px solid var(--app-color-border);
 
   @include respond-to('sm') {
     padding: $spacing-xl $spacing-lg;
@@ -40,14 +40,14 @@
   height: 64px;
   width: 64px;
   transition: transform $transition-base;
-  filter: drop-shadow(0 0 8px var(--pta-color-logo-shadow, #646cffaa));
+  filter: drop-shadow(0 0 8px var(--app-color-logo-shadow, #646cffaa));
 
   &:hover {
     transform: scale(1.05);
   }
 
   &--react {
-    filter: drop-shadow(0 0 8px var(--pta-color-logo-shadow-secondary, #673ab8aa));
+    filter: drop-shadow(0 0 8px var(--app-color-logo-shadow-secondary, #673ab8aa));
   }
 
   @include respond-to('sm') {
@@ -60,7 +60,7 @@
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: $font-weight-bold;
   margin-bottom: $spacing-md;
-  background: linear-gradient(135deg, var(--pta-color-primary), var(--pta-color-secondary));
+  background: linear-gradient(135deg, var(--app-color-primary), var(--app-color-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -68,7 +68,7 @@
 
 .app__subtitle {
   font-size: $font-size-lg;
-  color: var(--pta-color-text-secondary);
+  color: var(--app-color-text-secondary);
   max-width: 600px;
   margin: 0 auto;
 
@@ -104,5 +104,53 @@
 
   @include respond-to('sm') {
     margin-bottom: $spacing-2xl;
+  }
+}
+
+// Error boundary
+.error-boundary {
+  padding: $spacing-2xl;
+  text-align: center;
+  background-color: var(--app-color-error-background, #fee);
+  border: 1px solid var(--app-color-error-border, #fcc);
+  border-radius: $border-radius-md;
+  margin: $spacing-2xl;
+
+  @include respond-to('sm') {
+    padding: $spacing-xl;
+    margin: $spacing-xl;
+  }
+}
+
+.error-boundary__title {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: var(--app-color-error-text, #c00);
+  margin-bottom: $spacing-lg;
+}
+
+.error-boundary__message {
+  font-size: $font-size-md;
+  color: var(--app-color-text-secondary);
+  margin-bottom: $spacing-xl;
+}
+
+.error-boundary__retry-button {
+  padding: $spacing-sm $spacing-lg;
+  background-color: var(--app-color-primary);
+  color: white;
+  border: none;
+  border-radius: $border-radius-sm;
+  cursor: pointer;
+  font-size: $font-size-sm;
+  transition: background-color $transition-base;
+
+  &:hover {
+    background-color: var(--app-color-primary-dark);
+  }
+
+  &:focus {
+    outline: 2px solid var(--app-color-primary);
+    outline-offset: 2px;
   }
 }

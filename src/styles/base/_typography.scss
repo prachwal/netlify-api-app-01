@@ -19,8 +19,8 @@
   line-height: $line-height-base;
   font-weight: $font-weight-normal;
   color-scheme: light dark;
-  color: var(--pta-color-text, rgba(255, 255, 255, 0.87));
-  background-color: var(--pta-color-background, #242424);
+  color: var(--app-color-text, rgba(255, 255, 255, 0.87));
+  background-color: var(--app-color-background, #242424);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -35,7 +35,7 @@ h6 {
   font-family: $font-family-heading;
   font-weight: $font-weight-semibold;
   line-height: $line-height-tight;
-  color: var(--pta-color-text);
+  color: var(--app-color-text);
 }
 
 h1 {
@@ -70,7 +70,7 @@ h6 {
 
 p {
   margin-bottom: $spacing-md;
-  color: var(--pta-color-text);
+  color: var(--app-color-text);
 
   &:last-child {
     margin-bottom: 0;
@@ -79,13 +79,13 @@ p {
 
 // Links
 a {
-  color: var(--pta-color-primary);
+  color: var(--app-color-primary);
   text-decoration: inherit;
   font-weight: $font-weight-medium;
   transition: color $transition-base;
 
   &:hover {
-    color: var(--pta-color-primary-hover);
+    color: var(--app-color-primary-hover);
   }
 
   &:focus {
@@ -114,13 +114,13 @@ pre {
 }
 
 code {
-  background-color: var(--pta-color-surface);
+  background-color: var(--app-color-surface);
   padding: 0.125rem 0.25rem;
   border-radius: $border-radius-sm;
 }
 
 pre {
-  background-color: var(--pta-color-surface);
+  background-color: var(--app-color-surface);
   padding: $spacing-md;
   border-radius: $border-radius-md;
   overflow-x: auto;
@@ -131,15 +131,15 @@ pre {
 blockquote {
   margin: $spacing-md 0;
   padding-left: $spacing-md;
-  border-left: $border-width-base solid var(--pta-color-border);
+  border-left: $border-width-base solid var(--app-color-border);
   font-style: italic;
-  color: var(--pta-color-text-secondary);
+  color: var(--app-color-text-secondary);
 }
 
 // Horizontal rules
 hr {
   border: none;
   height: $border-width-thin;
-  background-color: var(--pta-color-border);
+  background-color: var(--app-color-border);
   margin: $spacing-xl 0;
 }

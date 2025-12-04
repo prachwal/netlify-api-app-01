@@ -5,11 +5,11 @@
 
 // Features container
 .features {
-  background-color: var(--pta-color-surface);
+  background-color: var(--app-color-surface);
   border-radius: $border-radius-lg;
   padding: $spacing-2xl;
   box-shadow: $shadow-md;
-  border: 1px solid var(--pta-color-border);
+  border: 1px solid var(--app-color-border);
 
   @include respond-to('sm') {
     padding: $spacing-xl;
@@ -19,7 +19,7 @@
 .features__title {
   font-size: $font-size-2xl;
   font-weight: $font-weight-semibold;
-  color: var(--pta-color-text);
+  color: var(--app-color-text);
   margin-bottom: $spacing-lg;
   text-align: center;
 }
@@ -41,9 +41,9 @@
   align-items: flex-start;
   gap: $spacing-sm;
   padding: $spacing-md;
-  background-color: var(--pta-color-surface-dark);
+  background-color: var(--app-color-surface-dark);
   border-radius: $border-radius-md;
-  border: 1px solid var(--pta-color-border);
+  border: 1px solid var(--app-color-border);
   transition:
     transform $transition-base,
     box-shadow $transition-base;
@@ -54,7 +54,7 @@
   }
 
   strong {
-    color: var(--pta-color-primary);
+    color: var(--app-color-primary);
     font-weight: $font-weight-semibold;
   }
 

@@ -63,7 +63,7 @@ h6 {
 }
 
 :focus-visible {
-  outline: $border-width-base solid var(--pta-color-border-focus);
+  outline: $border-width-base solid var(--app-color-border-focus);
   outline-offset: $spacing-xs;
 }
 

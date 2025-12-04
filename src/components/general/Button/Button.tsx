@@ -72,7 +72,7 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={combinedClassName}
-      disabled={disabled ?? loading}
+      disabled={disabled === true || loading === true}
       aria-busy={loading}
       {...props}
     >
@@ -92,7 +92,7 @@ export const Button: React.FC<ButtonProps> = ({
           </svg>
         </span>
       )}
-      {icon != null && loading !== true && (
+      {icon != null && !loading && (
         <span
           className={`${styles.button__icon} ${styles['button__icon--left']}`}
           aria-hidden="true"

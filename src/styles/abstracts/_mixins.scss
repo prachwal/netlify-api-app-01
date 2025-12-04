@@ -61,7 +61,7 @@
 }
 
 // Focus visible styles
-@mixin focus-visible($color: var(--pta-color-border-focus), $offset: 2px, $width: 3px) {
+@mixin focus-visible($color: var(--app-color-border-focus), $offset: 2px, $width: 3px) {
   &:focus {
     outline: none;
   }
