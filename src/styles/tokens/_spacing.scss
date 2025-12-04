@@ -1,0 +1,224 @@
+// styles/tokens/_spacing.scss - Spacing Scale System
+// 8px base unit system with fluid responsive spacing using clamp()
+
+// Base spacing unit (8px)
+$base-spacing: 0.5rem; // = 8px
+
+// Spacing scale following t-shirt sizes and Material Design principles
+$spacing-scale: (
+  // None (0)
+  'none': 0,
+
+  // Extra small (2px)
+  'xs': 0.125rem,
+
+  // Small (4px)
+  'xs2': 0.25rem,
+
+  // Medium (8px)
+  'sm': 0.5rem,
+
+  // Large (12px)
+  'sm2': 0.75rem,
+
+  // Extra large (16px)
+  'md': 1rem,
+
+  // Double large (24px)
+  'md2': 1.5rem,
+
+  // 2xl (32px)
+  'lg': 2rem,
+
+  // 3xl (40px)
+  'lg2': 2.5rem,
+
+  // 4xl (48px)
+  'xl': 3rem,
+
+  // 5xl (56px)
+  'xl2': 3.5rem,
+
+  // 6xl (64px)
+  '2xl': 4rem,
+
+  // 7xl (72px)
+  '2xl2': 4.5rem,
+
+  // 8xl (80px)
+  '3xl': 5rem,
+
+  // 9xl (96px)
+  '4xl': 6rem,
+);
+
+// Fluid spacing scale - responsive spacing that scales with viewport
+$spacing-fluid: (
+  // Borders and dividers (minimal, non-fluid)
+  'border-thin': 1px,
+  'border-base': 2px,
+  'border-thick': 4px,
+  'divider': 1px,
+
+  // Content spacing
+  'content-xs': clamp(0.5rem, 0.75vw, 0.75rem),     // 8px → 12px
+  'content-sm': clamp(0.75rem, 1vw, 1rem),          // 12px → 16px
+  'content-md': clamp(1rem, 1.5vw, 1.25rem),        // 16px → 20px
+  'content-lg': clamp(1.25rem, 2vw, 1.5rem),        // 20px → 24px
+  'content-xl': clamp(1.5rem, 2.5vw, 2rem),         // 24px → 32px
+  'content-2xl': clamp(2rem, 3vw, 2.5rem),          // 32px → 40px
+
+  // Layout spacing
+  'layout-xs': clamp(1rem, 1.5vw, 1.5rem),          // 16px → 24px
+  'layout-sm': clamp(1.5rem, 2vw, 2rem),            // 24px → 32px
+  'layout-md': clamp(2rem, 3vw, 3rem),              // 32px → 48px
+  'layout-lg': clamp(3rem, 4vw, 4rem),              // 48px → 64px
+  'layout-xl': clamp(4rem, 6vw, 6rem),              // 64px → 96px
+
+  // Container padding
+  'container-xs': clamp(0.75rem, 1.5vw, 1rem),      // 12px → 16px
+  'container-sm': clamp(1rem, 2vw, 1.5rem),         // 16px → 24px
+  'container-md': clamp(1.5rem, 3vw, 2rem),         // 24px → 32px
+  'container-lg': clamp(2rem, 4vw, 3rem),           // 32px → 48px
+  'container-xl': clamp(2.5rem, 5vw, 4rem),         // 40px → 64px
+
+  // Stack spacing (margin between elements)
+  'stack-xs': clamp(0.25rem, 0.5vw, 0.5rem),        // 4px → 8px
+  'stack-sm': clamp(0.5rem, 0.75vw, 0.75rem),       // 8px → 12px
+  'stack-md': clamp(0.75rem, 1vw, 1rem),            // 12px → 16px
+  'stack-lg': clamp(1rem, 1.5vw, 1.5rem),           // 16px → 24px
+  'stack-xl': clamp(1.5rem, 2vw, 2rem),             // 24px → 32px
+  'stack-section': clamp(2rem, 3vw, 3rem),          // 32px → 48px
+);
+
+// Legacy spacing scale for backwards compatibility
+$spacing-legacy: (
+  '0': 0,
+  'xs': 0.25rem,     // 4px
+  'sm': 0.5rem,      // 8px
+  'md': 1rem,        // 16px
+  'lg': 1.5rem,      // 24px
+  'xl': 2rem,        // 32px
+  '2xl': 3rem,       // 48px
+  '3xl': 4rem,       // 64px
+  '4xl': 6rem,       // 96px
+);
+
+// Generate CSS custom properties
+:root {
+  // Base spacing unit
+  --spacing-base: #{$base-spacing};
+
+  // Fixed spacing scale
+  @each $name, $value in $spacing-scale {
+    --spacing-#{$name}: #{$value};
+  }
+
+  // Fluid spacing scale
+  @each $name, $value in $spacing-fluid {
+    --spacing-#{$name}: #{$value};
+  }
+
+  // Legacy support
+  @each $name, $value in $spacing-legacy {
+    --spacing-#{$name}: #{$value};
+  }
+}
+
+// Spacing utility classes (optional - for direct usage)
+.spacing {
+  @each $name, $value in $spacing-scale {
+    &-#{$name} {
+      gap: var(--spacing-#{$name});
+    }
+
+    &-top-#{$name} {
+      margin-top: var(--spacing-#{$name});
+    }
+
+    &-bottom-#{$name} {
+      margin-bottom: var(--spacing-#{$name});
+    }
+
+    &-left-#{$name} {
+      margin-left: var(--spacing-#{$name});
+    }
+
+    &-right-#{$name} {
+      margin-right: var(--spacing-#{$name});
+    }
+
+    &-horizontal-#{$name} {
+      margin-left: var(--spacing-#{$name});
+      margin-right: var(--spacing-#{$name});
+    }
+
+    &-vertical-#{$name} {
+      margin-top: var(--spacing-#{$name});
+      margin-bottom: var(--spacing-#{$name});
+    }
+
+    &-padding-#{$name} {
+      padding: var(--spacing-#{$name});
+    }
+  }
+}
+
+// Responsive spacing adjustments
+@media (max-width: 768px) {
+  :root {
+    // Reduce container spacing on mobile
+    --spacing-container-xs: clamp(0.5rem, 1vw, 0.75rem);
+    --spacing-container-sm: clamp(0.75rem, 1.5vw, 1rem);
+    --spacing-container-md: clamp(1rem, 2vw, 1.5rem);
+
+    // Increase touch target spacing on mobile
+    --spacing-touch-target-min: 2.25rem; // 36px minimum
+  }
+}
+
+// Mixins for semantic spacing
+@mixin spacing($property, $size) {
+  @if map-has-key($spacing-scale, $size) {
+    #{$property}: var(--spacing-#{$size});
+  } @else if map-has-key($spacing-fluid, $size) {
+    #{$property}: var(--spacing-#{$size});
+  } @else if map-has-key($spacing-legacy, $size) {
+    #{$property}: var(--spacing-#{$size});
+  } @else {
+    @warn "#{$size} is not a valid spacing scale. Available sizes: #{map-keys($spacing-scale)}, #{map-keys($spacing-fluid)}";
+  }
+}
+
+@mixin spacing-margin($size) {
+  @include spacing(margin, $size);
+}
+
+@mixin spacing-padding($size) {
+  @include spacing(padding, $size);
+}
+
+@mixin spacing-gap($size) {
+  @include spacing(gap, $size);
+}
+
+// Compound spacing mixins
+@mixin spacing-stack($size) {
+  @if map-has-key($spacing-fluid, 'stack-#{$size}') {
+    gap: var(--spacing-stack-#{$size});
+  } @else {
+    @include spacing-gap($size);
+  }
+}
+
+@mixin spacing-inset($size) {
+  @include spacing(padding, $size);
+}
+
+@mixin spacing-container($size) {
+  @if map-has-key($spacing-fluid, 'container-#{$size}') {
+    padding: var(--spacing-container-#{$size});
+  } @else {
+    @include spacing(padding, $size);
+  }
+}

@@ -1,4 +1,4 @@
-// abstracts/_variables.scss - Global variables
+// abstracts/_variables.scss - Global variables with responsive design
 
 // Font families
 $font-family-base:
@@ -25,39 +25,46 @@ $line-height-tight: 1.1 !default;
 $line-height-base: 1.6 !default;
 $line-height-relaxed: 1.8 !default;
 
-// Font sizes
-$font-size-xs: 0.75rem !default; // 12px
-$font-size-sm: 0.875rem !default; // 14px
-$font-size-md: 1rem !default; // 16px
-$font-size-lg: 1.125rem !default; // 18px
-$font-size-xl: 1.25rem !default; // 20px
-$font-size-2xl: 1.5rem !default; // 24px
-$font-size-3xl: 1.875rem !default; // 30px
-$font-size-4xl: 2.25rem !default; // 36px
+// Font sizes (with clamp() for responsive typography)
+$font-size-xs: clamp(0.65rem, 1.5vw, 0.75rem) !default; // 12px responsive
+$font-size-sm: clamp(0.75rem, 2vw, 0.875rem) !default; // 14px responsive
+$font-size-md: clamp(0.875rem, 2.5vw, 1rem) !default; // 16px responsive
+$font-size-lg: clamp(1rem, 3vw, 1.125rem) !default; // 18px responsive
+$font-size-xl: clamp(1.125rem, 3.5vw, 1.25rem) !default; // 20px responsive
+$font-size-2xl: clamp(1.25rem, 4vw, 1.5rem) !default; // 24px responsive
+$font-size-3xl: clamp(1.5rem, 5vw, 1.875rem) !default; // 30px responsive
+$font-size-4xl: clamp(1.75rem, 6vw, 2.25rem) !default; // 36px responsive
 
-// Spacing scale (based on 8px grid)
+// Spacing scale (based on 8px grid with clamp)
 $spacing-0: 0 !default;
-$spacing-xs: 0.25rem !default; // 4px
-$spacing-sm: 0.5rem !default; // 8px
-$spacing-md: 1rem !default; // 16px
-$spacing-lg: 1.5rem !default; // 24px
-$spacing-xl: 2rem !default; // 32px
-$spacing-2xl: 3rem !default; // 48px
-$spacing-3xl: 4rem !default; // 64px
-$spacing-4xl: 6rem !default; // 96px
+$spacing-xs: clamp(0.25rem, 1vw, 0.25rem) !default; // 4px
+$spacing-sm: clamp(0.5rem, 1.5vw, 0.5rem) !default; // 8px
+$spacing-md: clamp(1rem, 2.5vw, 1rem) !default; // 16px
+$spacing-lg: clamp(1.5rem, 3vw, 1.5rem) !default; // 24px
+$spacing-xl: clamp(2rem, 4vw, 2rem) !default; // 32px
+$spacing-2xl: clamp(3rem, 6vw, 3rem) !default; // 48px
+$spacing-3xl: clamp(4rem, 8vw, 4rem) !default; // 64px
+$spacing-4xl: clamp(6rem, 12vw, 6rem) !default; // 96px
 
-// Container max-widths
-$max-width-xs: 480px !default;
-$max-width-sm: 640px !default;
-$max-width-md: 768px !default;
-$max-width-lg: 1024px !default;
-$max-width-xl: 1280px !default;
-$max-width-2xl: 1536px !default;
-$max-width-content: 680px !default;
-$max-width-container: 1200px !default;
+// Container max-widths (responsive with clamp)
+$max-width-xs: clamp(320px, 95vw, 480px) !default;
+$max-width-sm: clamp(320px, 90vw, 640px) !default;
+$max-width-md: clamp(320px, 85vw, 768px) !default;
+$max-width-lg: clamp(320px, 80vw, 1024px) !default;
+$max-width-xl: clamp(320px, 75vw, 1280px) !default;
+$max-width-2xl: clamp(320px, 70vw, 1536px) !default;
+$max-width-content: clamp(320px, 85vw, 680px) !default;
+$max-width-container: clamp(320px, 90vw, 1200px) !default;
 
 // Minimum widths
 $min-width-mobile: 320px !default;
+
+// Mobile-first Breakpoints
+$breakpoint-xs: 320px !default;
+$breakpoint-sm: 640px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 1024px !default;
+$breakpoint-xl: 1280px !default;
 
 // Z-index scale
 $z-index-base: 1 !default;
@@ -69,13 +76,15 @@ $z-index-modal: 50 !default;
 $z-index-popover: 60 !default;
 $z-index-tooltip: 70 !default;
 $z-index-skip-link: 100 !default;
+$z-index-sidebar: 1000 !default;
+$z-index-topbar: 1010 !default;
 
-// Border radius
+// Border radius (responsive)
 $border-radius-none: 0 !default;
-$border-radius-sm: 3px !default;
-$border-radius-md: 8px !default;
-$border-radius-lg: 12px !default;
-$border-radius-xl: 16px !default;
+$border-radius-sm: clamp(2px, 0.5vw, 3px) !default;
+$border-radius-md: clamp(6px, 1.5vw, 8px) !default;
+$border-radius-lg: clamp(10px, 2vw, 12px) !default;
+$border-radius-xl: clamp(12px, 2.5vw, 16px) !default;
 $border-radius-full: 9999px !default;
 
 // Transitions
@@ -84,7 +93,7 @@ $transition-base: 0.2s ease !default;
 $transition-slow: 0.3s ease !default;
 $transition-slower: 0.5s ease !default;
 
-// Shadows
+// Shadows (without clamp to avoid rgba() conflicts)
 $shadow-none: none !default;
 $shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05) !default;
 $shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1) !default;
@@ -96,3 +105,8 @@ $shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25) !default;
 $border-width-thin: 1px !default;
 $border-width-base: 2px !default;
 $border-width-thick: 4px !default;
+
+// Dashboard specific variables
+$sidebar-width: clamp(250px, 20vw, 280px) !default;
+$sidebar-width-collapsed: clamp(60px, 8vw, 80px) !default;
+$topbar-height: clamp(60px, 8vw, 80px) !default;

@@ -31,7 +31,7 @@ node merge-files.js netlify
 
 ### Command Line Arguments
 
-```
+```bash
 node merge-files.js [folder-path] [output-file]
 ```
 
@@ -55,7 +55,7 @@ The merged file includes:
 
 Example output:
 
-```
+```text
 MERGED FILES FROM: src
 Generated on: 2025-12-04T20:50:24.544Z
 Total files: 37

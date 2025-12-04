@@ -1,0 +1,133 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/colors' as *;
+@use '../abstracts/mixins' as *;
+
+// Dashboard API Demo Component
+.dashboard-api-demo {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  
+  &__section {
+    padding: $spacing-md;
+    background-color: var(--app-color-surface-variant);
+    border-radius: $border-radius-md;
+    border: $border-width-thin solid var(--app-color-outline-variant);
+  }
+  
+  &__title {
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    color: var(--app-color-text-primary);
+    margin: 0 0 $spacing-sm 0;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    
+    &::before {
+      content: '';
+      width: 3px;
+      height: 1.25rem;
+      background-color: var(--app-color-primary);
+      border-radius: $border-radius-sm;
+    }
+  }
+  
+  &__status {
+    color: var(--app-color-text-secondary);
+    font-style: italic;
+    margin: 0;
+  }
+  
+  &__response {
+    color: var(--app-color-primary);
+    font-weight: $font-weight-medium;
+    margin: 0;
+    padding: $spacing-sm;
+    background-color: var(--app-color-primary-container);
+    border-radius: $border-radius-sm;
+  }
+  
+  &__error {
+    color: var(--app-color-error);
+    margin: 0;
+    padding: $spacing-sm;
+    background-color: var(--app-color-error-container);
+    border-radius: $border-radius-sm;
+    border: $border-width-thin solid var(--app-color-error);
+  }
+  
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+  
+  &__item {
+    font-size: $font-size-sm;
+    color: var(--app-color-text-primary);
+    line-height: $line-height-relaxed;
+    
+    strong {
+      color: var(--app-color-text-secondary);
+      font-weight: $font-weight-medium;
+    }
+  }
+  
+  &__form {
+    display: flex;
+    gap: $spacing-sm;
+    align-items: stretch;
+    
+    @media (max-width: $breakpoint-sm) {
+      flex-direction: column;
+    }
+  }
+  
+  &__input {
+    flex: 1;
+    padding: $spacing-sm $spacing-md;
+    border: $border-width-thin solid var(--app-color-outline);
+    border-radius: $border-radius-md;
+    background-color: var(--app-color-surface);
+    color: var(--app-color-text-primary);
+    font-size: $font-size-sm;
+    
+    &::placeholder {
+      color: var(--app-color-text-secondary);
+    }
+    
+    &:focus {
+      outline: none;
+      border-color: var(--app-color-primary);
+      box-shadow: 0 0 0 2px rgba(var(--app-color-primary-rgb), 0.1);
+    }
+  }
+  
+  &__echo-response {
+    margin-top: $spacing-md;
+    padding: $spacing-md;
+    background-color: var(--app-color-surface);
+    border-radius: $border-radius-md;
+    border: $border-width-thin solid var(--app-color-outline-variant);
+    
+    .dashboard-api-demo__item {
+      margin-bottom: $spacing-xs;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: $breakpoint-sm) {
+  .dashboard-api-demo {
+    &__form {
+      .button {
+        width: 100%;
+      }
+    }
+  }
+}

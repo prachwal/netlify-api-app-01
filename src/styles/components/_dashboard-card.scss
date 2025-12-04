@@ -1,0 +1,130 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/colors' as *;
+@use '../abstracts/mixins' as *;
+
+// Dashboard Card Component
+.dashboard-card {
+  background-color: var(--app-color-surface);
+  border: $border-width-thin solid var(--app-color-outline);
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+  transition: all $transition-base;
+  overflow: hidden;
+  
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+  }
+  
+  // Card Header
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: $spacing-lg;
+    border-bottom: $border-width-thin solid var(--app-color-outline-variant);
+    background-color: var(--app-color-surface-variant);
+  }
+  
+  &__title-section {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-md;
+    flex: 1;
+  }
+  
+  &__icon {
+    font-size: $font-size-2xl;
+    flex-shrink: 0;
+    opacity: 0.8;
+    margin-top: 2px;
+  }
+  
+  &__title-wrapper {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: var(--app-color-text-primary);
+    margin: 0 0 $spacing-xs 0;
+    line-height: $line-height-tight;
+  }
+  
+  &__subtitle {
+    font-size: $font-size-sm;
+    color: var(--app-color-text-secondary);
+    margin: 0;
+    line-height: $line-height-base;
+  }
+  
+  &__actions {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-sm;
+    flex-shrink: 0;
+  }
+  
+  // Card Content
+  &__content {
+    padding: $spacing-lg;
+    
+    @media (max-width: $breakpoint-sm) {
+      padding: $spacing-md;
+    }
+  }
+}
+
+// Grid layout for dashboard cards
+.dashboard-grid {
+  display: grid;
+  gap: $spacing-lg;
+  
+  // Mobile-first grid
+  grid-template-columns: 1fr;
+  
+  // Tablet and up
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  // Desktop and up
+  @media (min-width: $breakpoint-lg) {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: $spacing-xl;
+  }
+  
+  // Large screens
+  @media (min-width: $breakpoint-xl) {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+}
+
+// Full width cards
+.dashboard-card--full-width {
+  grid-column: 1 / -1;
+  
+  @media (min-width: $breakpoint-md) {
+    grid-column: 1 / -1;
+  }
+}
+
+// Half width cards
+.dashboard-card--half-width {
+  @media (min-width: $breakpoint-md) {
+    grid-column: span 1;
+  }
+}
+
+// Third width cards
+.dashboard-card--third-width {
+  @media (min-width: $breakpoint-lg) {
+    grid-column: span 1;
+  }
+  
+  @media (min-width: $breakpoint-xl) {
+    grid-column: span 1;
+  }
+}

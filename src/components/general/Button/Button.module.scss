@@ -55,20 +55,20 @@
 
 // Color variants
 .button--primary {
-  background-color: var(--pta-color-primary);
+  background-color: var(--app-color-primary);
   color: white;
-  border-color: var(--pta-color-primary);
+  border-color: var(--app-color-primary);
 
   &:hover:not(:disabled) {
-    background-color: var(--pta-color-primary-hover);
-    border-color: var(--pta-color-primary-hover);
+    background-color: var(--app-color-primary-hover);
+    border-color: var(--app-color-primary-hover);
   }
 }
 
 .button--secondary {
-  background-color: var(--pta-color-secondary);
+  background-color: var(--app-color-secondary);
   color: white;
-  border-color: var(--pta-color-secondary);
+  border-color: var(--app-color-secondary);
 
   &:hover:not(:disabled) {
     background-color: #5a2a9c;
@@ -89,12 +89,12 @@
 
 .button--ghost {
   background-color: transparent;
-  color: var(--pta-color-text);
-  border-color: var(--pta-color-border);
+  color: var(--app-color-text);
+  border-color: var(--app-color-border);
 
   &:hover:not(:disabled) {
-    background-color: var(--pta-color-surface);
-    border-color: var(--pta-color-border-focus);
+    background-color: var(--app-color-surface);
+    border-color: var(--app-color-border-focus);
   }
 }
 

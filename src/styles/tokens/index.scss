@@ -1,0 +1,8 @@
+// styles/tokens/index.scss - Design Tokens Export
+// Central export file for all design tokens
+
+// Import all token systems
+@forward 'colors';
+@forward 'typography';
+@forward 'spacing';
+@forward 'breakpoints';

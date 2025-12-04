@@ -16,6 +16,9 @@
   // Generate primary colors
   @include generate-color-vars($colors-primary, 'app-color');
 
+  // Generate functional colors
+  @include generate-color-vars($colors-functional, 'app-color');
+
   // Generate dark theme colors
   @include generate-color-vars($colors-dark, 'app-color');
 }

@@ -1,0 +1,182 @@
+// styles/tokens/_colors.scss - Material Design 3 Color System
+// Based on 2024 Material Design guidelines with proper color palettes
+
+// Core brand colors - customize these for your brand
+$brand-primary: #646cff;
+$brand-secondary: #673ab8;
+$brand-tertiary: #00bcd4;
+
+// Functional colors for status indicators
+$color-error: #dc2626;
+$color-success: #10b981;
+$color-warning: #f59e0b;
+$color-info: #3b82f6;
+
+// Neutral background colors for light and dark themes
+$surface-light: (
+  'background': #fafafa,
+  'surface': #ffffff,
+  'surface-variant': #f5f5f5,
+  'surface-dim': #e8e8e8,
+  'surface-bright': #ffffff,
+  'surface-container': #f0f0f0,
+  'surface-container-high': #e6e6e6,
+  'surface-container-highest': #e0e0e0,
+  'surface-container-low': #f7f7f7,
+  'surface-container-lowest': #ffffff,
+);
+
+// Dark theme surface colors
+$surface-dark: (
+  'background': #0f0f0f,
+  'surface': #1a1a1a,
+  'surface-variant': #2d2d2d,
+  'surface-dim': #141414,
+  'surface-bright': #3a3a3a,
+  'surface-container': #1e1e1e,
+  'surface-container-high': #2a2a2a,
+  'surface-container-highest': #353535,
+  'surface-container-low': #141414,
+  'surface-container-lowest': #0f0f0f,
+);
+
+// Core text colors
+$text-light: (
+  'primary': rgba(0, 0, 0, 0.87),
+  'secondary': rgba(0, 0, 0, 0.60),
+  'tertiary': rgba(0, 0, 0, 0.38),
+  'disabled': rgba(0, 0, 0, 0.26),
+  'inverse': rgba(255, 255, 255, 0.95),
+);
+
+// Dark theme text colors
+$text-dark: (
+  'primary': rgba(255, 255, 255, 0.95),
+  'secondary': rgba(255, 255, 255, 0.70),
+  'tertiary': rgba(255, 255, 255, 0.50),
+  'disabled': rgba(255, 255, 255, 0.38),
+  'inverse': rgba(0, 0, 0, 0.87),
+);
+
+// Outline colors
+$outline-light: (
+  'outline': #c7c7c7,
+  'outline-variant': #e0e0e0,
+);
+
+// Dark theme outline colors
+$outline-dark: (
+  'outline': #8b8b8b,
+  'outline-variant': #4a4a4a,
+);
+
+// Primary color palette (Material Design 3)
+$palette-primary: (
+  'primary': $brand-primary,
+  'on-primary': #ffffff,
+  'primary-container': mix(#ffffff, $brand-primary, 90%),
+  'on-primary-container': mix(#000000, $brand-primary, 90%),
+);
+
+// Secondary color palette
+$palette-secondary: (
+  'secondary': $brand-secondary,
+  'on-secondary': #ffffff,
+  'secondary-container': mix(#ffffff, $brand-secondary, 90%),
+  'on-secondary-container': mix(#000000, $brand-secondary, 90%),
+);
+
+// Tertiary color palette
+$palette-tertiary: (
+  'tertiary': $brand-tertiary,
+  'on-tertiary': #ffffff,
+  'tertiary-container': mix(#ffffff, $brand-tertiary, 90%),
+  'on-tertiary-container': mix(#000000, $brand-tertiary, 90%),
+);
+
+// Error color palette
+$palette-error: (
+  'error': $color-error,
+  'on-error': #ffffff,
+  'error-container': mix(#ffffff, $color-error, 90%),
+  'on-error-container': mix(#000000, $color-error, 90%),
+);
+
+// Success color palette
+$palette-success: (
+  'success': $color-success,
+  'on-success': #ffffff,
+  'success-container': mix(#ffffff, $color-success, 90%),
+  'on-success-container': mix(#000000, $color-success, 90%),
+);
+
+// Warning color palette
+$palette-warning: (
+  'warning': $color-warning,
+  'on-warning': #ffffff,
+  'warning-container': mix(#ffffff, $color-warning, 90%),
+  'on-warning-container': mix(#000000, $color-warning, 80%),
+);
+
+// Mixin to generate CSS custom properties
+@mixin generate-color-vars($map, $prefix) {
+  @each $name, $value in $map {
+    --#{$prefix}-#{$name}: #{$value};
+  }
+}
+
+// Generate all color variables for light theme (default)
+:root {
+  // Surface colors (light theme default)
+  @include generate-color-vars($surface-light, 'surface');
+  @include generate-color-vars($text-light, 'text');
+  @include generate-color-vars($outline-light, 'outline');
+
+  // Color palettes
+  @include generate-color-vars($palette-primary, 'color');
+  @include generate-color-vars($palette-secondary, 'color');
+  @include generate-color-vars($palette-tertiary, 'color');
+  @include generate-color-vars($palette-error, 'color');
+  @include generate-color-vars($palette-success, 'color');
+  @include generate-color-vars($palette-warning, 'color');
+}
+
+// Dark theme override (media query for user's system preference)
+@media (prefers-color-scheme: dark) {
+  :root {
+    // Surface colors (dark theme)
+    @include generate-color-vars($surface-dark, 'surface');
+    @include generate-color-vars($text-dark, 'text');
+    @include generate-color-vars($outline-dark, 'outline');
+  }
+}
+
+// Legacy support - map new tokens to old naming for backwards compatibility
+$legacy-colors: (
+  'app-color-primary': var(--color-primary),
+  'app-color-primary-hover': var(--color-primary),
+  'app-color-secondary': var(--color-secondary),
+  'app-color-surface': var(--surface-surface),
+  'app-color-surface-variant': var(--surface-surface-variant),
+  'app-color-surface-dim': var(--surface-surface-dim),
+  'app-color-surface-bright': var(--surface-surface-bright),
+  'app-color-surface-container': var(--surface-surface-container),
+  'app-color-text': var(--text-secondary),
+  'app-color-text-primary': var(--text-primary),
+  'app-color-text-secondary': var(--text-secondary),
+  'app-color-text-tertiary': var(--text-tertiary),
+  'app-color-border': var(--outline-outline-variant),
+  'app-color-border-focus': var(--color-primary),
+  'app-color-outline': var(--outline-outline),
+  'app-color-outline-variant': var(--outline-outline-variant),
+  'app-color-error': var(--color-error),
+  'app-color-success': var(--color-success),
+  'app-color-warning': var(--color-warning),
+);
+
+// Apply legacy variables
+:root {
+  @each $name, $value in $legacy-colors {
+    #{$name}: #{$value};
+  }
+}

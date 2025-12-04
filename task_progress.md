@@ -1,0 +1,10 @@
+- [x] Analyze and understand the workspace problems
+- [x] Fix ESLint warnings in src/store/api/apiSlice.ts (replace 'any' types)
+- [x] Fix ESLint warnings in src/components/sections/ApiDemoSection.tsx (conditional check)
+- [x] Fix ESLint warnings in src/components/layout/Sidebar.tsx (nullable values)
+- [x] Fix ESLint warnings in src/components/layout/Topbar.tsx (unused parameters)
+- [x] Fix ESLint warnings in src/components/dashboard/DashboardCard.tsx (nullable values)
+- [x] Fix ESLint warnings in src/App.tsx (any types and nullish coalescing)
+- [x] Fix the corrupted ../netlify-api-app- file/directory issue
+- [x] Fix markdown lint warnings in MERGE-FILES-README.md
+- [x] Fix remaining lint errors

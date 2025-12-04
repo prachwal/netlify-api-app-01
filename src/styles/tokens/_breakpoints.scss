@@ -1,0 +1,170 @@
+// styles/tokens/_breakpoints.scss - Breakpoint System
+// Consistent breakpoint scale with semantic names following Material Design
+
+// Breakpoint scale following common device sizes
+$breakpoints: (
+  // Mobile-first approach
+  'xs': 480px,      // Small mobile
+  'sm': 640px,      // Large mobile / small tablet
+  'md': 768px,      // Tablet
+  'lg': 1024px,     // Small desktop / laptop
+  'xl': 1280px,     // Desktop
+  '2xl': 1536px,    // Large desktop
+  '3xl': 1920px,    // Ultra-wide
+);
+
+// Legacy breakpoint names for backwards compatibility
+$breakpoints-legacy: (
+  'mobile': 480px,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'desktop-lg': 1280px,
+  'desktop-xl': 1536px,
+);
+
+// Generate CSS custom properties
+:root {
+  @each $name, $value in $breakpoints {
+    --breakpoint-#{$name}: #{$value};
+  }
+
+  // Legacy support
+  @each $name, $value in $breakpoints-legacy {
+    --breakpoint-#{$name}: #{$value};
+  }
+}
+
+// Media query mixins for responsive design
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else if map-has-key($breakpoints-legacy, $breakpoint) {
+    @media (min-width: map-get($breakpoints-legacy, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "#{$breakpoint} is not a valid breakpoint. Available breakpoints: #{map-keys($breakpoints)}";
+  }
+}
+
+@mixin respond-below($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: #{map-get($breakpoints, $breakpoint) - 1px}) {
+      @content;
+    }
+  } @else if map-has-key($breakpoints-legacy, $breakpoint) {
+    @media (max-width: #{map-get($breakpoints-legacy, $breakpoint) - 1px}) {
+      @content;
+    }
+  } @else {
+    @warn "#{$breakpoint} is not a valid breakpoint. Available breakpoints: #{map-keys($breakpoints)}";
+  }
+}
+
+@mixin respond-between($min, $max) {
+  $min-value: null;
+  $max-value: null;
+
+  @if map-has-key($breakpoints, $min) {
+    $min-value: map-get($breakpoints, $min);
+  } @else if map-has-key($breakpoints-legacy, $min) {
+    $min-value: map-get($breakpoints-legacy, $min);
+  }
+
+  @if map-has-key($breakpoints, $max) {
+    $max-value: map-get($breakpoints, $max) - 1px;
+  } @else if map-has-key($breakpoints-legacy, $max) {
+    $max-value: map-get($breakpoints-legacy, $max) - 1px;
+  }
+
+  @if $min-value and $max-value {
+    @media (min-width: $min-value) and (max-width: $max-value) {
+      @content;
+    }
+  } @else {
+    @warn "Invalid breakpoint names: #{$min} or #{$max}";
+  }
+}
+
+// Container query support (modern browsers)
+@mixin container-query($container-name, $breakpoint) {
+  $value: null;
+
+  @if map-has-key($breakpoints, $breakpoint) {
+    $value: map-get($breakpoints, $breakpoint);
+  } @else if map-has-key($breakpoints-legacy, $breakpoint) {
+    $value: map-get($breakpoints-legacy, $breakpoint);
+  }
+
+  @if $value {
+    @container #{$container-name} (min-width: #{$value}) {
+      @content;
+    }
+  } @else {
+    @warn "#{$breakpoint} is not a valid breakpoint";
+  }
+}
+
+// Print media query
+@mixin print {
+  @media print {
+    @content;
+  }
+}
+
+// Dark mode media query
+@mixin dark-mode {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}
+
+// Light mode media query
+@mixin light-mode {
+  @media (prefers-color-scheme: light) {
+    @content;
+  }
+}
+
+// Reduced motion media query (accessibility)
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+// High contrast mode
+@mixin high-contrast {
+  @media (prefers-contrast: high) {
+    @content;
+  }
+}
+
+// Orientation queries
+@mixin landscape {
+  @media (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin portrait {
+  @media (orientation: portrait) {
+    @content;
+  }
+}
+
+// Touch device detection (coarse pointers)
+@mixin touch-device {
+  @media (pointer: coarse) {
+    @content;
+  }
+}
+
+// Precise pointer device (mouse/stylus)
+@mixin precise-device {
+  @media (pointer: fine) {
+    @content;
+  }
+}

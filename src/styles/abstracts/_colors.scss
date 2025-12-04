@@ -1,16 +1,41 @@
-// abstracts/_colors.scss - Color system
+// abstracts/_colors.scss - Complete Material Design 3 Color System
 
-// Primary brand colors
+// Base color values
 $colors-primary: (
   'primary': #646cff,
   'primary-hover': #535bf2,
   'secondary': #673ab8,
 ) !default;
 
-// Dark theme palette
+// Error, success, warning colors
+$colors-functional: (
+  'error': #dc2626,
+  'error-hover': #b91c1c,
+  'success': #10b981,
+  'success-hover': #059669,
+  'warning': #f59e0b,
+  'warning-hover': #d97706,
+) !default;
+
+// Dark theme palette (Material Design 3)
 $colors-dark: (
-  'background': #242424,
+  // Core colors
+  'background': #0f0f0f,
   'surface': #1a1a1a,
+  'surface-variant': #2d2d2d,
+  'surface-dim': #141414,
+  'surface-bright': #3a3a3a,
+
+  // Text colors
+  'text-primary': rgba(255, 255, 255, 0.95),
+  'text-secondary': rgba(255, 255, 255, 0.70),
+  'text-tertiary': rgba(255, 255, 255, 0.50),
+
+  // Outline and borders
+  'outline': #8b8b8b,
+  'outline-variant': #4a4a4a,
+
+  // Legacy color mappings (for compatibility)
   'surface-dark': #1a1a1a,
   'text': rgba(255, 255, 255, 0.87),
   'text-secondary': #888,
@@ -20,8 +45,23 @@ $colors-dark: (
 
 // Light theme palette
 $colors-light: (
-  'background': #ffffff,
-  'surface': #f5f5f7,
+  // Core colors
+  'background': #fafafa,
+  'surface': #ffffff,
+  'surface-variant': #f5f5f5,
+  'surface-dim': #e8e8e8,
+  'surface-bright': #ffffff,
+
+  // Text colors
+  'text-primary': rgba(0, 0, 0, 0.87),
+  'text-secondary': rgba(0, 0, 0, 0.60),
+  'text-tertiary': rgba(0, 0, 0, 0.38),
+
+  // Outline and borders
+  'outline': #c7c7c7,
+  'outline-variant': #e0e0e0,
+
+  // Legacy color mappings (for compatibility)
   'surface-dark': #f9f9f9,
   'text': #213547,
   'text-secondary': #666,
@@ -30,7 +70,7 @@ $colors-light: (
 ) !default;
 
 // Mixin to generate CSS custom properties from a map
-@mixin generate-color-vars($map, $prefix: 'color') {
+@mixin generate-color-vars($map, $prefix: 'app-color') {
   @each $name, $value in $map {
     --#{$prefix}-#{$name}: #{$value};
   }

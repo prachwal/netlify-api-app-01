@@ -1,3 +1,4 @@
-// components/layout/index.ts - Barrel export for layout components
-
-// Future layout components exports
+export { DashboardLayout } from './DashboardLayout';
+export { Sidebar } from './Sidebar';
+export { Topbar } from './Topbar';
+export { DashboardContent } from './DashboardContent';
