@@ -34,8 +34,10 @@ $colors-dark: (
   // Outline and borders
   'outline': #8b8b8b,
   'outline-variant': #4a4a4a,
+) !default;
 
-  // Legacy color mappings (for compatibility)
+// Legacy color mappings (for compatibility)
+$colors-dark-legacy: (
   'surface-dark': #1a1a1a,
   'text': rgba(255, 255, 255, 0.87),
   'text-secondary': #888,
@@ -60,8 +62,10 @@ $colors-light: (
   // Outline and borders
   'outline': #c7c7c7,
   'outline-variant': #e0e0e0,
+) !default;
 
-  // Legacy color mappings (for compatibility)
+// Legacy color mappings (for compatibility)
+$colors-light-legacy: (
   'surface-dark': #f9f9f9,
   'text': #213547,
   'text-secondary': #666,
@@ -69,9 +73,5 @@ $colors-light: (
   'border-focus': #646cff,
 ) !default;
 
-// Mixin to generate CSS custom properties from a map
-@mixin generate-color-vars($map, $prefix: 'app-color') {
-  @each $name, $value in $map {
-    --#{$prefix}-#{$name}: #{$value};
-  }
-}
+// Note: generate-color-vars mixin moved to tokens/_colors.scss for better organization
+// and is now available globally through @use 'tokens' as *

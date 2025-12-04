@@ -1,182 +1,146 @@
-// styles/tokens/_colors.scss - Material Design 3 Color System
-// Based on 2024 Material Design guidelines with proper color palettes
+// styles/tokens/_colors.scss - UNIFIED Color System
+// Single source of truth for all colors
 
-// Core brand colors - customize these for your brand
+// ============================================================================
+// CORE BRAND COLORS
+// ============================================================================
 $brand-primary: #646cff;
 $brand-secondary: #673ab8;
 $brand-tertiary: #00bcd4;
 
-// Functional colors for status indicators
+// Functional colors
 $color-error: #dc2626;
 $color-success: #10b981;
 $color-warning: #f59e0b;
-$color-info: #3b82f6;
 
-// Neutral background colors for light and dark themes
-$surface-light: (
-  'background': #fafafa,
-  'surface': #ffffff,
-  'surface-variant': #f5f5f5,
-  'surface-dim': #e8e8e8,
-  'surface-bright': #ffffff,
-  'surface-container': #f0f0f0,
-  'surface-container-high': #e6e6e6,
-  'surface-container-highest': #e0e0e0,
-  'surface-container-low': #f7f7f7,
-  'surface-container-lowest': #ffffff,
-);
+// ============================================================================
+// COLOR GENERATION FUNCTION
+// ============================================================================
+@function generate-tonal-palette($base-color) {
+  @return (
+    'base': $base-color,
+    'light': mix(white, $base-color, 20%),
+    'dark': mix(black, $base-color, 20%),
+    'container': mix(white, $base-color, 88%),
+    'on-container': mix(black, $base-color, 85%),
+  );
+}
 
-// Dark theme surface colors
+// ============================================================================
+// COLOR PALETTES
+// ============================================================================
+$palette-primary: generate-tonal-palette($brand-primary);
+$palette-secondary: generate-tonal-palette($brand-secondary);
+$palette-error: generate-tonal-palette($color-error);
+$palette-success: generate-tonal-palette($color-success);
+
+// Dark theme surfaces
 $surface-dark: (
-  'background': #0f0f0f,
+  'bg': #0f0f0f,
   'surface': #1a1a1a,
   'surface-variant': #2d2d2d,
-  'surface-dim': #141414,
-  'surface-bright': #3a3a3a,
-  'surface-container': #1e1e1e,
-  'surface-container-high': #2a2a2a,
-  'surface-container-highest': #353535,
-  'surface-container-low': #141414,
-  'surface-container-lowest': #0f0f0f,
+  'outline': #4a4a4a,
+  'outline-variant': #8b8b8b,
 );
 
-// Core text colors
-$text-light: (
-  'primary': rgba(0, 0, 0, 0.87),
-  'secondary': rgba(0, 0, 0, 0.60),
-  'tertiary': rgba(0, 0, 0, 0.38),
-  'disabled': rgba(0, 0, 0, 0.26),
-  'inverse': rgba(255, 255, 255, 0.95),
-);
-
-// Dark theme text colors
-$text-dark: (
-  'primary': rgba(255, 255, 255, 0.95),
-  'secondary': rgba(255, 255, 255, 0.70),
-  'tertiary': rgba(255, 255, 255, 0.50),
-  'disabled': rgba(255, 255, 255, 0.38),
-  'inverse': rgba(0, 0, 0, 0.87),
-);
-
-// Outline colors
-$outline-light: (
+// Light theme surfaces
+$surface-light: (
+  'bg': #fafafa,
+  'surface': #ffffff,
+  'surface-variant': #f5f5f5,
   'outline': #c7c7c7,
   'outline-variant': #e0e0e0,
 );
 
-// Dark theme outline colors
-$outline-dark: (
-  'outline': #8b8b8b,
-  'outline-variant': #4a4a4a,
+// Dark theme text
+$text-dark: (
+  'primary': rgba(255, 255, 255, 0.95),
+  'secondary': rgba(255, 255, 255, 0.70),
+  'tertiary': rgba(255, 255, 255, 0.50),
 );
 
-// Primary color palette (Material Design 3)
-$palette-primary: (
-  'primary': $brand-primary,
-  'on-primary': #ffffff,
-  'primary-container': mix(#ffffff, $brand-primary, 90%),
-  'on-primary-container': mix(#000000, $brand-primary, 90%),
+// Light theme text
+$text-light: (
+  'primary': rgba(0, 0, 0, 0.87),
+  'secondary': rgba(0, 0, 0, 0.60),
+  'tertiary': rgba(0, 0, 0, 0.38),
 );
 
-// Secondary color palette
-$palette-secondary: (
-  'secondary': $brand-secondary,
-  'on-secondary': #ffffff,
-  'secondary-container': mix(#ffffff, $brand-secondary, 90%),
-  'on-secondary-container': mix(#000000, $brand-secondary, 90%),
-);
-
-// Tertiary color palette
-$palette-tertiary: (
-  'tertiary': $brand-tertiary,
-  'on-tertiary': #ffffff,
-  'tertiary-container': mix(#ffffff, $brand-tertiary, 90%),
-  'on-tertiary-container': mix(#000000, $brand-tertiary, 90%),
-);
-
-// Error color palette
-$palette-error: (
-  'error': $color-error,
-  'on-error': #ffffff,
-  'error-container': mix(#ffffff, $color-error, 90%),
-  'on-error-container': mix(#000000, $color-error, 90%),
-);
-
-// Success color palette
-$palette-success: (
-  'success': $color-success,
-  'on-success': #ffffff,
-  'success-container': mix(#ffffff, $color-success, 90%),
-  'on-success-container': mix(#000000, $color-success, 90%),
-);
-
-// Warning color palette
-$palette-warning: (
-  'warning': $color-warning,
-  'on-warning': #ffffff,
-  'warning-container': mix(#ffffff, $color-warning, 90%),
-  'on-warning-container': mix(#000000, $color-warning, 80%),
-);
-
-// Mixin to generate CSS custom properties
-@mixin generate-color-vars($map, $prefix) {
-  @each $name, $value in $map {
-    --#{$prefix}-#{$name}: #{$value};
-  }
-}
-
-// Generate all color variables for light theme (default)
+// ============================================================================
+// GENERATE CSS CUSTOM PROPERTIES
+// ============================================================================
 :root {
-  // Surface colors (light theme default)
-  @include generate-color-vars($surface-light, 'surface');
-  @include generate-color-vars($text-light, 'text');
-  @include generate-color-vars($outline-light, 'outline');
+  // Primary palette
+  --color-primary: #{map-get($palette-primary, 'base')};
+  --color-primary-light: #{map-get($palette-primary, 'light')};
+  --color-primary-dark: #{map-get($palette-primary, 'dark')};
+  --color-primary-container: #{map-get($palette-primary, 'container')};
+  --color-on-primary-container: #{map-get($palette-primary, 'on-container')};
+  --color-on-primary: #ffffff;
 
-  // Color palettes
-  @include generate-color-vars($palette-primary, 'color');
-  @include generate-color-vars($palette-secondary, 'color');
-  @include generate-color-vars($palette-tertiary, 'color');
-  @include generate-color-vars($palette-error, 'color');
-  @include generate-color-vars($palette-success, 'color');
-  @include generate-color-vars($palette-warning, 'color');
+  // Secondary palette
+  --color-secondary: #{map-get($palette-secondary, 'base')};
+  --color-secondary-container: #{map-get($palette-secondary, 'container')};
+  --color-on-secondary: #ffffff;
+
+  // Error palette
+  --color-error: #{map-get($palette-error, 'base')};
+  --color-error-container: #{map-get($palette-error, 'container')};
+  --color-on-error: #ffffff;
+
+  // Success palette
+  --color-success: #{map-get($palette-success, 'base')};
+  --color-success-container: #{map-get($palette-success, 'container')};
+  --color-on-success: #ffffff;
+
+  // Dark theme (default)
+  --color-bg: #{map-get($surface-dark, 'bg')};
+  --color-surface: #{map-get($surface-dark, 'surface')};
+  --color-surface-variant: #{map-get($surface-dark, 'surface-variant')};
+  --color-outline: #{map-get($surface-dark, 'outline')};
+  --color-outline-variant: #{map-get($surface-dark, 'outline-variant')};
+
+  --color-text-primary: #{map-get($text-dark, 'primary')};
+  --color-text-secondary: #{map-get($text-dark, 'secondary')};
+  --color-text-tertiary: #{map-get($text-dark, 'tertiary')};
 }
 
-// Dark theme override (media query for user's system preference)
-@media (prefers-color-scheme: dark) {
+// Light theme override
+@media (prefers-color-scheme: light) {
   :root {
-    // Surface colors (dark theme)
-    @include generate-color-vars($surface-dark, 'surface');
-    @include generate-color-vars($text-dark, 'text');
-    @include generate-color-vars($outline-dark, 'outline');
+    --color-bg: #{map-get($surface-light, 'bg')};
+    --color-surface: #{map-get($surface-light, 'surface')};
+    --color-surface-variant: #{map-get($surface-light, 'surface-variant')};
+    --color-outline: #{map-get($surface-light, 'outline')};
+    --color-outline-variant: #{map-get($surface-light, 'outline-variant')};
+
+    --color-text-primary: #{map-get($text-light, 'primary')};
+    --color-text-secondary: #{map-get($text-light, 'secondary')};
+    --color-text-tertiary: #{map-get($text-light, 'tertiary')};
   }
 }
 
-// Legacy support - map new tokens to old naming for backwards compatibility
-$legacy-colors: (
-  'app-color-primary': var(--color-primary),
-  'app-color-primary-hover': var(--color-primary),
-  'app-color-secondary': var(--color-secondary),
-  'app-color-surface': var(--surface-surface),
-  'app-color-surface-variant': var(--surface-surface-variant),
-  'app-color-surface-dim': var(--surface-surface-dim),
-  'app-color-surface-bright': var(--surface-surface-bright),
-  'app-color-surface-container': var(--surface-surface-container),
-  'app-color-text': var(--text-secondary),
-  'app-color-text-primary': var(--text-primary),
-  'app-color-text-secondary': var(--text-secondary),
-  'app-color-text-tertiary': var(--text-tertiary),
-  'app-color-border': var(--outline-outline-variant),
-  'app-color-border-focus': var(--color-primary),
-  'app-color-outline': var(--outline-outline),
-  'app-color-outline-variant': var(--outline-outline-variant),
-  'app-color-error': var(--color-error),
-  'app-color-success': var(--color-success),
-  'app-color-warning': var(--color-warning),
-);
-
-// Apply legacy variables
+// ============================================================================
+// LEGACY ALIASES (for backwards compatibility)
+// ============================================================================
 :root {
-  @each $name, $value in $legacy-colors {
-    #{$name}: #{$value};
-  }
+  // Map new system to old naming
+  --app-color-primary: var(--color-primary);
+  --app-color-primary-hover: var(--color-primary-dark);
+  --app-color-secondary: var(--color-secondary);
+  --app-color-background: var(--color-bg);
+  --app-color-surface: var(--color-surface);
+  --app-color-surface-variant: var(--color-surface-variant);
+  --app-color-surface-dark: var(--color-surface-variant);
+  --app-color-text: var(--color-text-secondary);
+  --app-color-text-primary: var(--color-text-primary);
+  --app-color-text-secondary: var(--color-text-secondary);
+  --app-color-outline: var(--color-outline);
+  --app-color-outline-variant: var(--color-outline-variant);
+  --app-color-border: var(--color-outline-variant);
+  --app-color-border-focus: var(--color-primary);
+  --app-color-error: var(--color-error);
+  --app-color-primary-container: var(--color-primary-container);
+  --app-color-error-container: var(--color-error-container);
+  --app-color-on-primary-container: var(--color-on-primary-container);
 }

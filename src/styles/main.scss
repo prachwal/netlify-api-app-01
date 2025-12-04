@@ -1,31 +1,20 @@
-// Main SCSS entry point - imports in specific order
+// Main SCSS entry point - SIMPLIFIED
+// Design tokens generate ALL CSS variables, no duplication needed
 
-// 1. Configuration and helpers (no CSS output)
+// 1. Design tokens (generate CSS custom properties)
+@use 'tokens' as *;
+
+// 2. Configuration and helpers (mixins for components)
 @use 'abstracts/variables' as *;
-@use 'abstracts/colors' as *;
 @use 'abstracts/mixins' as *;
 
-// 2. Base styles and resets
+// 3. Base styles and resets
 @use 'base';
 
-// 3. Component styles
+// 4. Component styles
 @use 'components';
 
-// 4. Generate color variables for theming
-:root {
-  // Generate primary colors
-  @include generate-color-vars($colors-primary, 'app-color');
-
-  // Generate functional colors
-  @include generate-color-vars($colors-functional, 'app-color');
-
-  // Generate dark theme colors
-  @include generate-color-vars($colors-dark, 'app-color');
-}
-
-// Light theme override
-@media (prefers-color-scheme: light) {
-  :root {
-    @include generate-color-vars($colors-light, 'app-color');
-  }
-}
+// That's it! Tokens already generated:
+// - --color-primary, --color-secondary, etc. (new system)
+// - --app-color-* (legacy aliases for backwards compatibility)
+// - --spacing-*, --font-*, --breakpoint-* (design tokens)

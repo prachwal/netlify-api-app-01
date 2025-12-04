@@ -1,30 +1,32 @@
 // components/general/Button/Button.module.scss - Button component styles
+// Updated to use CSS variables for consistency across the app
 
-@use '../../../styles/abstracts/variables' as *;
+// Import only for mixins, not for variables (those come from CSS custom properties now)
 @use '../../../styles/abstracts/mixins' as *;
 
-// Button base styles
+// Button base styles using CSS variables
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: $spacing-sm;
-  padding: $spacing-sm $spacing-lg;
-  border: $border-width-base solid transparent;
-  border-radius: $border-radius-md;
-  font-family: inherit;
-  font-size: $font-size-md;
-  font-weight: $font-weight-medium;
-  line-height: $line-height-base;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: 2px solid transparent;
+  border-radius: var(--spacing-xs);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
-  transition: all $transition-base;
+  transition: all 0.15s ease;
   user-select: none;
   outline: none;
 
-  &:focus {
-    @include focus-visible;
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
   }
 
   &:disabled {
@@ -32,25 +34,29 @@
     opacity: 0.6;
   }
 
-  &:active {
+  &:hover:not(:disabled) {
+    filter: brightness(0.9);
+  }
+
+  &:active:not(:disabled) {
     transform: translateY(1px);
   }
 }
 
-// Size variants
+// Size variants using CSS variables
 .button--small {
-  padding: $spacing-xs $spacing-md;
-  font-size: $font-size-sm;
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: var(--font-size-label-sm);
 }
 
 .button--medium {
-  padding: $spacing-sm $spacing-lg;
-  font-size: $font-size-md;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-label-md);
 }
 
 .button--large {
-  padding: $spacing-md $spacing-xl;
-  font-size: $font-size-lg;
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-label-lg);
 }
 
 // Color variants
@@ -109,18 +115,18 @@
   opacity: 0.6;
 }
 
-// Icon positioning
+// Icon positioning using CSS variables
 .button__icon {
   display: flex;
   align-items: center;
   justify-content: center;
 
   &--left {
-    margin-right: $spacing-xs;
+    margin-right: var(--spacing-xs);
   }
 
   &--right {
-    margin-left: $spacing-xs;
+    margin-left: var(--spacing-xs);
   }
 }
 
@@ -131,7 +137,7 @@
   justify-content: center;
   width: 1rem;
   height: 1rem;
-  margin-right: $spacing-xs;
+  margin-right: var(--spacing-xs);
 }
 
 .spinner {
