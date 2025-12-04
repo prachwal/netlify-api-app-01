@@ -1,0 +1,174 @@
+// components/_api-demo.scss - API demo section styles
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// API section container
+.api-section {
+  margin-bottom: $spacing-2xl;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.api-section__title {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: var(--pta-color-text);
+  margin-bottom: $spacing-lg;
+  border-bottom: 2px solid var(--pta-color-primary);
+  padding-bottom: $spacing-sm;
+}
+
+// API status messages
+.api-status {
+  padding: $spacing-md;
+  background-color: var(--pta-color-surface-dark);
+  border: 1px solid var(--pta-color-border);
+  border-radius: $border-radius-md;
+  color: var(--pta-color-text-secondary);
+  font-style: italic;
+  text-align: center;
+}
+
+// API response messages
+.api-response {
+  padding: $spacing-md;
+  background-color: var(--pta-color-surface-dark);
+  border: 1px solid var(--pta-color-primary);
+  border-radius: $border-radius-md;
+  color: var(--pta-color-text);
+  font-weight: $font-weight-medium;
+  text-align: center;
+}
+
+// API error messages
+.api-error {
+  padding: $spacing-md;
+  background-color: rgba(220, 38, 38, 0.1);
+  border: 1px solid #dc2626;
+  border-radius: $border-radius-md;
+  color: #dc2626;
+  font-weight: $font-weight-medium;
+  text-align: center;
+}
+
+// API info container
+.api-info {
+  background-color: var(--pta-color-surface-dark);
+  border: 1px solid var(--pta-color-border);
+  border-radius: $border-radius-md;
+  padding: $spacing-lg;
+  display: grid;
+  gap: $spacing-md;
+
+  @include respond-to('sm') {
+    padding: $spacing-md;
+  }
+}
+
+.api-info__item {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+
+  strong {
+    color: var(--pta-color-text-secondary);
+    font-size: $font-size-sm;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: $font-weight-semibold;
+  }
+
+  span {
+    color: var(--pta-color-text);
+    font-family: $font-family-mono;
+    background-color: var(--pta-color-background);
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-sm;
+    border: 1px solid var(--pta-color-border);
+    word-break: break-all;
+  }
+}
+
+// Echo form container
+.echo-form {
+  display: flex;
+  gap: $spacing-md;
+  align-items: flex-start;
+  margin-bottom: $spacing-lg;
+
+  @include respond-to('sm') {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+// Echo input field
+.echo-input {
+  flex: 1;
+  padding: $spacing-md;
+  border: 2px solid var(--pta-color-border);
+  border-radius: $border-radius-md;
+  background-color: var(--pta-color-surface);
+  color: var(--pta-color-text);
+  font-size: $font-size-md;
+  transition: border-color $transition-base;
+
+  &:focus {
+    outline: none;
+    border-color: var(--pta-color-primary);
+    @include focus-visible;
+  }
+
+  &::placeholder {
+    color: var(--pta-color-text-secondary);
+  }
+
+  @include respond-to('sm') {
+    padding: $spacing-sm;
+  }
+}
+
+// Echo response container
+.echo-response {
+  background-color: var(--pta-color-surface-dark);
+  border: 1px solid var(--pta-color-border);
+  border-radius: $border-radius-md;
+  padding: $spacing-lg;
+  margin-top: $spacing-lg;
+
+  @include respond-to('sm') {
+    padding: $spacing-md;
+  }
+}
+
+.echo-response__item {
+  margin-bottom: $spacing-md;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  strong {
+    color: var(--pta-color-text-secondary);
+    font-size: $font-size-sm;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: $font-weight-semibold;
+    display: block;
+    margin-bottom: $spacing-xs;
+  }
+
+  span {
+    color: var(--pta-color-text);
+    font-family: $font-family-mono;
+    background-color: var(--pta-color-background);
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-sm;
+    border: 1px solid var(--pta-color-border);
+    word-break: break-all;
+    display: block;
+  }
+}
