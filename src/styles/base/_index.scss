@@ -1,0 +1,4 @@
+// base/_index.scss - Barrel export for base styles
+
+@forward 'reset';
+@forward 'typography';

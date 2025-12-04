@@ -1,0 +1,6 @@
+// components/_index.scss - Barrel export for component styles
+
+@forward 'app';
+@forward 'card';
+@forward 'counter';
+@forward 'features';

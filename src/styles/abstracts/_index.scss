@@ -1,0 +1,5 @@
+// abstracts/_index.scss - Barrel export for abstracts
+
+@use 'variables' as *;
+@use 'colors' as *;
+@use 'mixins' as *;

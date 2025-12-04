@@ -1,0 +1,50 @@
+// components/_card.scss - Card component styles
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Card base styles
+.card {
+  background-color: var(--pta-color-surface);
+  border-radius: $border-radius-lg;
+  padding: $spacing-2xl;
+  box-shadow: $shadow-lg;
+  border: 1px solid var(--pta-color-border);
+  transition: box-shadow $transition-base, transform $transition-base;
+  
+  &:hover {
+    box-shadow: $shadow-xl;
+    transform: translateY(-2px);
+  }
+  
+  @include respond-to('sm') {
+    padding: $spacing-xl;
+  }
+}
+
+.card__title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+  color: var(--pta-color-text);
+  margin-bottom: $spacing-lg;
+  text-align: center;
+}
+
+.card__description {
+  margin-top: $spacing-lg;
+  padding-top: $spacing-lg;
+  border-top: 1px solid var(--pta-color-border);
+  text-align: center;
+  color: var(--pta-color-text-secondary);
+  font-size: $font-size-sm;
+}
+
+.card__code {
+  background-color: var(--pta-color-surface-dark);
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius-sm;
+  font-family: $font-family-mono;
+  font-size: 0.875em;
+  color: var(--pta-color-primary);
+  border: 1px solid var(--pta-color-border);
+}

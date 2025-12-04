@@ -1,0 +1,90 @@
+// abstracts/_variables.scss - Global variables
+
+// Font families
+$font-family-base: system-ui, -apple-system, 'Segoe UI', Roboto, Avenir, Helvetica, Arial, sans-serif !default;
+$font-family-mono: 'Courier New', Courier, monospace !default;
+$font-family-heading: inherit !default;
+
+// Font weights
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold: 700 !default;
+
+// Line heights
+$line-height-tight: 1.1 !default;
+$line-height-base: 1.6 !default;
+$line-height-relaxed: 1.8 !default;
+
+// Font sizes
+$font-size-xs: 0.75rem !default;   // 12px
+$font-size-sm: 0.875rem !default;  // 14px
+$font-size-md: 1rem !default;      // 16px
+$font-size-lg: 1.125rem !default;  // 18px
+$font-size-xl: 1.25rem !default;   // 20px
+$font-size-2xl: 1.5rem !default;   // 24px
+$font-size-3xl: 1.875rem !default; // 30px
+$font-size-4xl: 2.25rem !default;  // 36px
+
+// Spacing scale (based on 8px grid)
+$spacing-0: 0 !default;
+$spacing-xs: 0.25rem !default;  // 4px
+$spacing-sm: 0.5rem !default;   // 8px
+$spacing-md: 1rem !default;     // 16px
+$spacing-lg: 1.5rem !default;   // 24px
+$spacing-xl: 2rem !default;     // 32px
+$spacing-2xl: 3rem !default;    // 48px
+$spacing-3xl: 4rem !default;    // 64px
+$spacing-4xl: 6rem !default;    // 96px
+
+// Container max-widths
+$max-width-xs: 480px !default;
+$max-width-sm: 640px !default;
+$max-width-md: 768px !default;
+$max-width-lg: 1024px !default;
+$max-width-xl: 1280px !default;
+$max-width-2xl: 1536px !default;
+$max-width-content: 680px !default;
+$max-width-container: 1200px !default;
+
+// Minimum widths
+$min-width-mobile: 320px !default;
+
+// Z-index scale
+$z-index-base: 1 !default;
+$z-index-dropdown: 10 !default;
+$z-index-sticky: 20 !default;
+$z-index-fixed: 30 !default;
+$z-index-modal-backdrop: 40 !default;
+$z-index-modal: 50 !default;
+$z-index-popover: 60 !default;
+$z-index-tooltip: 70 !default;
+$z-index-skip-link: 100 !default;
+
+// Border radius
+$border-radius-none: 0 !default;
+$border-radius-sm: 3px !default;
+$border-radius-md: 8px !default;
+$border-radius-lg: 12px !default;
+$border-radius-xl: 16px !default;
+$border-radius-full: 9999px !default;
+
+// Transitions
+$transition-fast: 0.15s ease !default;
+$transition-base: 0.2s ease !default;
+$transition-slow: 0.3s ease !default;
+$transition-slower: 0.5s ease !default;
+
+// Shadows
+$shadow-none: none !default;
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05) !default;
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1) !default;
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1) !default;
+$shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15) !default;
+$shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25) !default;
+
+// Borders
+$border-width-thin: 1px !default;
+$border-width-base: 2px !default;
+$border-width-thick: 4px !default;

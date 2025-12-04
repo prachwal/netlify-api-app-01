@@ -1,0 +1,62 @@
+// components/_counter.scss - Counter component styles
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Counter container
+.counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-2xl;
+}
+
+// Counter display
+.counter__display {
+  text-align: center;
+  padding: $spacing-2xl;
+  background-color: var(--pta-color-surface-dark);
+  border-radius: $border-radius-lg;
+  border: 2px solid var(--pta-color-border);
+  min-width: 200px;
+  
+  @include respond-to('sm') {
+    padding: $spacing-xl;
+    min-width: 150px;
+  }
+}
+
+.counter__value {
+  display: block;
+  font-size: clamp(2rem, 8vw, 4rem);
+  font-weight: $font-weight-bold;
+  color: var(--pta-color-primary);
+  line-height: $line-height-tight;
+  
+  @include respond-to('sm') {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+}
+
+.counter__status {
+  display: block;
+  font-size: $font-size-sm;
+  color: var(--pta-color-text-secondary);
+  margin-top: $spacing-sm;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+// Counter controls
+.counter__controls {
+  display: flex;
+  gap: $spacing-md;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  @include respond-to('sm') {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+}

@@ -1,0 +1,136 @@
+// base/_typography.scss - Typography base styles
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Font loading optimization
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+}
+
+// Root typography variables
+:root {
+  font-family: $font-family-base;
+  font-size: 16px;
+  line-height: $line-height-base;
+  font-weight: $font-weight-normal;
+  color-scheme: light dark;
+  color: var(--pta-color-text, rgba(255, 255, 255, 0.87));
+  background-color: var(--pta-color-background, #242424);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+// Typography scale
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  color: var(--pta-color-text);
+}
+
+h1 {
+  @include fluid-type(2rem, 3.2rem);
+  margin-bottom: $spacing-lg;
+}
+
+h2 {
+  @include fluid-type(1.75rem, 2.5rem);
+  margin-bottom: $spacing-md;
+}
+
+h3 {
+  @include fluid-type(1.5rem, 2rem);
+  margin-bottom: $spacing-md;
+}
+
+h4 {
+  @include fluid-type(1.25rem, 1.75rem);
+  margin-bottom: $spacing-sm;
+}
+
+h5 {
+  font-size: $font-size-lg;
+  margin-bottom: $spacing-sm;
+}
+
+h6 {
+  font-size: $font-size-md;
+  margin-bottom: $spacing-sm;
+}
+
+p {
+  margin-bottom: $spacing-md;
+  color: var(--pta-color-text);
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Links
+a {
+  color: var(--pta-color-primary);
+  text-decoration: inherit;
+  font-weight: $font-weight-medium;
+  transition: color $transition-base;
+  
+  &:hover {
+    color: var(--pta-color-primary-hover);
+  }
+  
+  &:focus {
+    @include focus-visible;
+  }
+}
+
+// Lists
+ul, ol {
+  margin-bottom: $spacing-md;
+  padding-left: $spacing-lg;
+}
+
+li {
+  margin-bottom: $spacing-xs;
+}
+
+// Code
+code, kbd, samp, pre {
+  font-family: $font-family-mono;
+  font-size: 0.875em;
+}
+
+code {
+  background-color: var(--pta-color-surface);
+  padding: 0.125rem 0.25rem;
+  border-radius: $border-radius-sm;
+}
+
+pre {
+  background-color: var(--pta-color-surface);
+  padding: $spacing-md;
+  border-radius: $border-radius-md;
+  overflow-x: auto;
+  margin-bottom: $spacing-md;
+}
+
+// Blockquotes
+blockquote {
+  margin: $spacing-md 0;
+  padding-left: $spacing-md;
+  border-left: $border-width-base solid var(--pta-color-border);
+  font-style: italic;
+  color: var(--pta-color-text-secondary);
+}
+
+// Horizontal rules
+hr {
+  border: none;
+  height: $border-width-thin;
+  background-color: var(--pta-color-border);
+  margin: $spacing-xl 0;
+}

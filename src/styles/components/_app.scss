@@ -1,0 +1,108 @@
+// components/_app.scss - Main app component styles
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// App container
+.app {
+  min-height: 100vh;
+  background-color: var(--pta-color-background);
+  color: var(--pta-color-text);
+  display: flex;
+  flex-direction: column;
+}
+
+// Header styles
+.app__header {
+  text-align: center;
+  padding: $spacing-2xl $spacing-xl;
+  background-color: var(--pta-color-surface);
+  border-bottom: 1px solid var(--pta-color-border);
+  
+  @include respond-to('sm') {
+    padding: $spacing-xl $spacing-lg;
+  }
+}
+
+.app__logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $spacing-xl;
+  margin-bottom: $spacing-lg;
+  
+  @include respond-to('sm') {
+    gap: $spacing-lg;
+  }
+}
+
+.app__logo {
+  height: 64px;
+  width: 64px;
+  transition: transform $transition-base;
+  filter: drop-shadow(0 0 8px var(--pta-color-logo-shadow, #646cffaa));
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+  
+  &--react {
+    filter: drop-shadow(0 0 8px var(--pta-color-logo-shadow-secondary, #673ab8aa));
+  }
+  
+  @include respond-to('sm') {
+    height: 48px;
+    width: 48px;
+  }
+}
+
+.app__title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-md;
+  background: linear-gradient(135deg, var(--pta-color-primary), var(--pta-color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.app__subtitle {
+  font-size: $font-size-lg;
+  color: var(--pta-color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  
+  @include respond-to('sm') {
+    font-size: $font-size-md;
+  }
+}
+
+// Main content area
+.app__main {
+  flex: 1;
+  padding: $spacing-3xl $spacing-xl;
+  max-width: $max-width-content;
+  margin: 0 auto;
+  width: 100%;
+  
+  @include respond-to('md') {
+    padding: $spacing-2xl $spacing-lg;
+  }
+  
+  @include respond-to('sm') {
+    padding: $spacing-xl $spacing-md;
+  }
+}
+
+// App sections
+.app__section {
+  margin-bottom: $spacing-3xl;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  @include respond-to('sm') {
+    margin-bottom: $spacing-2xl;
+  }
+}

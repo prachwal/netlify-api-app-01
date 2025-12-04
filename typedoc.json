@@ -1,0 +1,23 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPointStrategy": "expand",
+  "entryPoints": ["src"],
+  "out": "docs",
+  "plugin": ["typedoc-plugin-markdown"],
+  "readme": "README.md",
+  "hideBreadcrumbs": true,
+  "categorizeByGroup": true,
+  "excludeExternals": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeInternal": true,
+  "excludeReferences": true,
+  "includeVersion": true,
+  "sort": ["alphabetical", "source-order"],
+  "name": "Netlify API App Documentation",
+  "navigationLinks": {
+    "Home": "index.md",
+    "Guide": "guides/index.md",
+    "API": "modules/index.md"
+  }
+}

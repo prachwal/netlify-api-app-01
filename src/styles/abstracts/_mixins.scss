@@ -1,0 +1,87 @@
+// abstracts/_mixins.scss - Reusable mixins
+
+@use 'variables' as *;
+
+// Responsive mixins
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (max-width: 640px) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    @media (max-width: 768px) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  } @else if $breakpoint == 'xl' {
+    @media (max-width: 1280px) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint: #{$breakpoint}";
+  }
+}
+
+// Min-width media query
+@mixin respond-from($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (min-width: 640px) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  } @else if $breakpoint == 'xl' {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint: #{$breakpoint}";
+  }
+}
+
+// Flexbox center
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Fluid typography using clamp() - simplified version
+@mixin fluid-type($min-size, $max-size) {
+  font-size: clamp(#{$min-size}, 5vw, #{$max-size});
+}
+
+// Focus visible styles
+@mixin focus-visible($color: var(--pta-color-border-focus), $offset: 2px, $width: 3px) {
+  &:focus {
+    outline: none;
+  }
+  
+  &:focus-visible {
+    outline: $width solid $color;
+    outline-offset: $offset;
+  }
+}
+
+// Hover lift effect
+@mixin hover-lift($distance: -2px, $shadow: $shadow-lg) {
+  transition: transform $transition-base, box-shadow $transition-base;
+  
+  &:hover {
+    transform: translateY($distance);
+    box-shadow: $shadow;
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
