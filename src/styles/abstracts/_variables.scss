@@ -1,7 +1,15 @@
 // abstracts/_variables.scss - Global variables
 
 // Font families
-$font-family-base: system-ui, -apple-system, 'Segoe UI', Roboto, Avenir, Helvetica, Arial, sans-serif !default;
+$font-family-base:
+  system-ui,
+  -apple-system,
+  'Segoe UI',
+  Roboto,
+  Avenir,
+  Helvetica,
+  Arial,
+  sans-serif !default;
 $font-family-mono: 'Courier New', Courier, monospace !default;
 $font-family-heading: inherit !default;
 
@@ -18,25 +26,25 @@ $line-height-base: 1.6 !default;
 $line-height-relaxed: 1.8 !default;
 
 // Font sizes
-$font-size-xs: 0.75rem !default;   // 12px
-$font-size-sm: 0.875rem !default;  // 14px
-$font-size-md: 1rem !default;      // 16px
-$font-size-lg: 1.125rem !default;  // 18px
-$font-size-xl: 1.25rem !default;   // 20px
-$font-size-2xl: 1.5rem !default;   // 24px
+$font-size-xs: 0.75rem !default; // 12px
+$font-size-sm: 0.875rem !default; // 14px
+$font-size-md: 1rem !default; // 16px
+$font-size-lg: 1.125rem !default; // 18px
+$font-size-xl: 1.25rem !default; // 20px
+$font-size-2xl: 1.5rem !default; // 24px
 $font-size-3xl: 1.875rem !default; // 30px
-$font-size-4xl: 2.25rem !default;  // 36px
+$font-size-4xl: 2.25rem !default; // 36px
 
 // Spacing scale (based on 8px grid)
 $spacing-0: 0 !default;
-$spacing-xs: 0.25rem !default;  // 4px
-$spacing-sm: 0.5rem !default;   // 8px
-$spacing-md: 1rem !default;     // 16px
-$spacing-lg: 1.5rem !default;   // 24px
-$spacing-xl: 2rem !default;     // 32px
-$spacing-2xl: 3rem !default;    // 48px
-$spacing-3xl: 4rem !default;    // 64px
-$spacing-4xl: 6rem !default;    // 96px
+$spacing-xs: 0.25rem !default; // 4px
+$spacing-sm: 0.5rem !default; // 8px
+$spacing-md: 1rem !default; // 16px
+$spacing-lg: 1.5rem !default; // 24px
+$spacing-xl: 2rem !default; // 32px
+$spacing-2xl: 3rem !default; // 48px
+$spacing-3xl: 4rem !default; // 64px
+$spacing-4xl: 6rem !default; // 96px
 
 // Container max-widths
 $max-width-xs: 480px !default;

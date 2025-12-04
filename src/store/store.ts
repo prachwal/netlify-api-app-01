@@ -10,7 +10,7 @@ export const store = configureStore({
   reducer: {
     counter: counterReducer,
   },
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: ['persist/PERSIST'],

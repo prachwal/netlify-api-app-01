@@ -9,14 +9,12 @@ import './styles/main.scss';
 
 /**
  * Main application entry point
- * 
+ *
  * @remarks
  * Configures Redux Provider and renders the main App component.
  * This is the root of the React application tree.
  */
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
   <React.StrictMode>

@@ -65,7 +65,7 @@
   &:focus {
     outline: none;
   }
-  
+
   &:focus-visible {
     outline: $width solid $color;
     outline-offset: $offset;
@@ -74,13 +74,15 @@
 
 // Hover lift effect
 @mixin hover-lift($distance: -2px, $shadow: $shadow-lg) {
-  transition: transform $transition-base, box-shadow $transition-base;
-  
+  transition:
+    transform $transition-base,
+    box-shadow $transition-base;
+
   &:hover {
     transform: translateY($distance);
     box-shadow: $shadow;
   }
-  
+
   &:active {
     transform: translateY(0);
   }

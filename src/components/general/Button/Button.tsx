@@ -10,37 +10,37 @@ import styles from './Button.module.scss';
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Button content */
   children: ReactNode;
-  
+
   /** Visual variant of the button */
   variant?: 'primary' | 'secondary' | 'danger' | 'ghost';
-  
+
   /** Size of the button */
   size?: 'small' | 'medium' | 'large';
-  
+
   /** Whether the button is in loading state */
   loading?: boolean;
-  
+
   /** Icon to display before text */
   icon?: ReactNode;
-  
+
   /** Icon to display after text */
   iconRight?: ReactNode;
 }
 
 /**
  * General purpose Button component
- * 
+ *
  * @remarks
  * This component supports multiple variants, sizes, and states.
  * Provides proper accessibility attributes and keyboard navigation.
- * 
+ *
  * @example
  * ```tsx
  * <Button variant="primary" size="medium" onClick={handleClick}>
  *   Click me
  * </Button>
  * ```
- * 
+ *
  * @param props - Component props
  * @returns Rendered button element
  */
@@ -61,15 +61,13 @@ export const Button: React.FC<ButtonProps> = ({
   const stateClasses = [
     loading === true && styles['button--loading'],
     disabled === true && styles['button--disabled'],
-  ].filter(Boolean).join(' ');
+  ]
+    .filter(Boolean)
+    .join(' ');
 
-  const combinedClassName = [
-    baseClasses,
-    variantClasses,
-    sizeClasses,
-    stateClasses,
-    className,
-  ].filter(Boolean).join(' ');
+  const combinedClassName = [baseClasses, variantClasses, sizeClasses, stateClasses, className]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <button
@@ -95,13 +93,19 @@ export const Button: React.FC<ButtonProps> = ({
         </span>
       )}
       {icon != null && loading !== true && (
-        <span className={`${styles.button__icon} ${styles['button__icon--left']}`} aria-hidden="true">
+        <span
+          className={`${styles.button__icon} ${styles['button__icon--left']}`}
+          aria-hidden="true"
+        >
           {icon}
         </span>
       )}
       <span className={styles.button__content}>{children}</span>
       {iconRight != null && (
-        <span className={`${styles.button__icon} ${styles['button__icon--right']}`} aria-hidden="true">
+        <span
+          className={`${styles.button__icon} ${styles['button__icon--right']}`}
+          aria-hidden="true"
+        >
           {iconRight}
         </span>
       )}

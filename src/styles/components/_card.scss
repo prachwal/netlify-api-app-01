@@ -10,13 +10,15 @@
   padding: $spacing-2xl;
   box-shadow: $shadow-lg;
   border: 1px solid var(--pta-color-border);
-  transition: box-shadow $transition-base, transform $transition-base;
-  
+  transition:
+    box-shadow $transition-base,
+    transform $transition-base;
+
   &:hover {
     box-shadow: $shadow-xl;
     transform: translateY(-2px);
   }
-  
+
   @include respond-to('sm') {
     padding: $spacing-xl;
   }

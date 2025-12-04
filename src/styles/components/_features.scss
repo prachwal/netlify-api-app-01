@@ -10,7 +10,7 @@
   padding: $spacing-2xl;
   box-shadow: $shadow-md;
   border: 1px solid var(--pta-color-border);
-  
+
   @include respond-to('sm') {
     padding: $spacing-xl;
   }
@@ -30,7 +30,7 @@
   margin: 0;
   display: grid;
   gap: $spacing-md;
-  
+
   @include respond-to('md') {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
@@ -44,18 +44,20 @@
   background-color: var(--pta-color-surface-dark);
   border-radius: $border-radius-md;
   border: 1px solid var(--pta-color-border);
-  transition: transform $transition-base, box-shadow $transition-base;
-  
+  transition:
+    transform $transition-base,
+    box-shadow $transition-base;
+
   &:hover {
     transform: translateY(-1px);
     box-shadow: $shadow-sm;
   }
-  
+
   strong {
     color: var(--pta-color-primary);
     font-weight: $font-weight-semibold;
   }
-  
+
   @include respond-to('sm') {
     flex-direction: column;
     text-align: center;

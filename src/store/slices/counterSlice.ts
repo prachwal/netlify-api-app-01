@@ -26,11 +26,11 @@ const counterSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
-    increment: (state) => {
+    increment: state => {
       state.status = 'idle';
       state.value += 1;
     },
-    decrement: (state) => {
+    decrement: state => {
       state.status = 'idle';
       state.value -= 1;
     },
@@ -38,7 +38,7 @@ const counterSlice = createSlice({
       state.status = 'idle';
       state.value += action.payload;
     },
-    reset: (state) => {
+    reset: state => {
       state.value = 0;
       state.status = 'idle';
     },
@@ -51,13 +51,7 @@ const counterSlice = createSlice({
 /**
  * Export actions
  */
-export const {
-  increment,
-  decrement,
-  incrementByAmount,
-  reset,
-  setLoading,
-} = counterSlice.actions;
+export const { increment, decrement, incrementByAmount, reset, setLoading } = counterSlice.actions;
 
 /**
  * Export reducer

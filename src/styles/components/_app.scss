@@ -18,7 +18,7 @@
   padding: $spacing-2xl $spacing-xl;
   background-color: var(--pta-color-surface);
   border-bottom: 1px solid var(--pta-color-border);
-  
+
   @include respond-to('sm') {
     padding: $spacing-xl $spacing-lg;
   }
@@ -30,7 +30,7 @@
   align-items: center;
   gap: $spacing-xl;
   margin-bottom: $spacing-lg;
-  
+
   @include respond-to('sm') {
     gap: $spacing-lg;
   }
@@ -41,15 +41,15 @@
   width: 64px;
   transition: transform $transition-base;
   filter: drop-shadow(0 0 8px var(--pta-color-logo-shadow, #646cffaa));
-  
+
   &:hover {
     transform: scale(1.05);
   }
-  
+
   &--react {
     filter: drop-shadow(0 0 8px var(--pta-color-logo-shadow-secondary, #673ab8aa));
   }
-  
+
   @include respond-to('sm') {
     height: 48px;
     width: 48px;
@@ -71,7 +71,7 @@
   color: var(--pta-color-text-secondary);
   max-width: 600px;
   margin: 0 auto;
-  
+
   @include respond-to('sm') {
     font-size: $font-size-md;
   }
@@ -84,11 +84,11 @@
   max-width: $max-width-content;
   margin: 0 auto;
   width: 100%;
-  
+
   @include respond-to('md') {
     padding: $spacing-2xl $spacing-lg;
   }
-  
+
   @include respond-to('sm') {
     padding: $spacing-xl $spacing-md;
   }
@@ -97,11 +97,11 @@
 // App sections
 .app__section {
   margin-bottom: $spacing-3xl;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
-  
+
   @include respond-to('sm') {
     margin-bottom: $spacing-2xl;
   }

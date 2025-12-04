@@ -10,14 +10,14 @@ import reactLogo from './assets/react.svg';
 
 /**
  * Main application component
- * 
+ *
  * @remarks
  * This component demonstrates the integration of:
  * - Redux Toolkit for state management
  * - SCSS module styling
  * - TypeScript interfaces
  * - Modern React patterns
- * 
+ *
  * @returns Rendered application component
  */
 const App: React.FC = () => {
@@ -51,18 +51,12 @@ const App: React.FC = () => {
       <header className="app__header">
         <div className="app__logo-container">
           <a href="https://vite.dev" target="_blank" rel="noopener noreferrer">
-            <img 
-              src={viteLogo} 
-              className="app__logo" 
-              alt="Vite logo"
-              width="64"
-              height="64"
-            />
+            <img src={viteLogo} className="app__logo" alt="Vite logo" width="64" height="64" />
           </a>
           <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
-            <img 
-              src={reactLogo} 
-              className="app__logo app__logo--react" 
+            <img
+              src={reactLogo}
+              className="app__logo app__logo--react"
               alt="React logo"
               width="64"
               height="64"
@@ -81,37 +75,31 @@ const App: React.FC = () => {
             <h2 className="card__title">Redux Counter</h2>
             <div className="counter">
               <div className="counter__display">
-                <span className="counter__value">
-                  Count is {value}
-                </span>
-                {status !== 'idle' && (
-                  <span className="counter__status">
-                    Status: {status}
-                  </span>
-                )}
+                <span className="counter__value">Count is {value}</span>
+                {status !== 'idle' && <span className="counter__status">Status: {status}</span>}
               </div>
-              
+
               <div className="counter__controls">
-                <Button 
-                  variant="primary" 
+                <Button
+                  variant="primary"
                   size="medium"
                   onClick={handleIncrement}
                   disabled={status === 'loading'}
                 >
                   Increment
                 </Button>
-                
-                <Button 
-                  variant="secondary" 
+
+                <Button
+                  variant="secondary"
                   size="medium"
                   onClick={handleDecrement}
                   disabled={status === 'loading'}
                 >
                   Decrement
                 </Button>
-                
-                <Button 
-                  variant="danger" 
+
+                <Button
+                  variant="danger"
                   size="medium"
                   onClick={handleReset}
                   disabled={value === 0 || status === 'loading'}
@@ -120,11 +108,10 @@ const App: React.FC = () => {
                 </Button>
               </div>
             </div>
-            
+
             <p className="card__description">
-              Edit{' '}
-              <code className="card__code">src/App.tsx</code>
-              {' '}and save to test Redux state management with TypeScript.
+              Edit <code className="card__code">src/App.tsx</code> and save to test Redux state
+              management with TypeScript.
             </p>
           </div>
         </section>
@@ -152,7 +139,8 @@ const App: React.FC = () => {
                 ✅ <strong>Vitest</strong> - Fast unit testing with coverage
               </li>
               <li className="features__item">
-                ✅ <strong>Component Architecture</strong> - Organized by scope (general, layout, app)
+                ✅ <strong>Component Architecture</strong> - Organized by scope (general, layout,
+                app)
               </li>
             </ul>
           </div>

@@ -26,7 +26,12 @@
 }
 
 // Typography scale
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $font-family-heading;
   font-weight: $font-weight-semibold;
   line-height: $line-height-tight;
@@ -66,7 +71,7 @@ h6 {
 p {
   margin-bottom: $spacing-md;
   color: var(--pta-color-text);
-  
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -78,18 +83,19 @@ a {
   text-decoration: inherit;
   font-weight: $font-weight-medium;
   transition: color $transition-base;
-  
+
   &:hover {
     color: var(--pta-color-primary-hover);
   }
-  
+
   &:focus {
     @include focus-visible;
   }
 }
 
 // Lists
-ul, ol {
+ul,
+ol {
   margin-bottom: $spacing-md;
   padding-left: $spacing-lg;
 }
@@ -99,7 +105,10 @@ li {
 }
 
 // Code
-code, kbd, samp, pre {
+code,
+kbd,
+samp,
+pre {
   font-family: $font-family-mono;
   font-size: 0.875em;
 }

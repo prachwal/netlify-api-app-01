@@ -15,7 +15,7 @@
 :root {
   // Generate primary colors
   @include generate-color-vars($colors-primary, 'pta-color');
-  
+
   // Generate dark theme colors
   @include generate-color-vars($colors-dark, 'pta-color');
 }
