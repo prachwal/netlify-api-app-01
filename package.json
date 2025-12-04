@@ -1,8 +1,17 @@
 {
   "name": "netlify-api-app-01",
-  "private": true,
+  "description": "React application with Netlify API integration, built with Vite and TypeScript. Features modern development setup with testing, linting, and documentation generation.",
   "version": "0.0.0",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/netlify-api-app-01.git"
+  },
+  "keywords": ["netlify", "api", "react", "vite", "typescript", "redux-toolkit", "testing", "documentation"],
+  "private": true,
+  "author": "Przemyslaw Rachwlal <przemyslaw.rachwal@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://dazzling-sorbet-7944be.netlify.app",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
